@@ -1,0 +1,99 @@
+<link rel="import"  href="https://polygit.org/components/polymer/polymer-element.html">
+<dom-module id="ko-menu">
+    <template>
+            <header id="header">
+                    
+                            <div class="header-middle">
+                                <div class="container relative">
+                                    <a href="index.html" class="logo pull-left"></a>
+                                    <div class="header-search">
+                                        <div class="header-search_filter">
+                                            <select class="formDropdown font-additional font-weight-normal" name="filterby" id="filterby">
+                                                <option value="0">Filtrar por</option>
+                                                <option v-for="categoria in categorias" :value="categoria.id">{{categoria.nombre_categoria_producto}}</option>
+                                            </select>
+                                            <i class="fa fa-angle-down customColor"></i>
+                                        </div>
+                                        <div class="header-search_form">
+                                            <form class="product-search form-inline" action="#" method="POST">
+                                                <div class="form-group">
+                                                    <label class="sr-only" for="searchQuery">Nombre del Producto ...</label>
+                                                    <input type="search" class="product-search_field font-main font-weight-normal" id="searchQuery" placeholder="Nombre del Producto ...">
+                                                </div>
+                                                <button type="submit" class="product-search_btn hvr-border-fade">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="header-cart pull-right">
+                                        <div class="header-cart_preview">
+                                            <span class="sli icon-bag customBgColor" aria-hidden="true"></span>
+                                            <span class="header-cart_qty font-additional font-weight-bold text-uppercase">2 ITEM(S)</span>
+                                            <span class="header-cart_amount font-additional font-weight-normal">97.25 USD</span>
+                                            <span class="eli arrow_right customColor" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="header-cart_product clearfix">
+                                            <h3 class="font-additional font-weight-bold">Recently added item(s)</h3>
+                                            <ul class="header-cart_product_list">
+                                                <li>
+                                                    <div class="header-cart_product_list_item clearfix">
+                                                        <a class="item-preview" href="product-details.html"><img src="media/70x70/1.jpg" alt="Product"></a>
+                                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">Stylish Wear</a></h4>
+                                                        <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">Men</a></span>
+                                                        <span class="item-price font-additional font-weight-normal customColor">37.15 USD</span>
+                                                        <a class="item-del hover-focus-color" href="#"><i class="fa fa-trash-o"></i></a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="header-cart_product_list_item clearfix">
+                                                        <a class="item-preview" href="product-details.html"><img src="media/70x70/2.jpg" alt="Product"></a>
+                                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">Bag</a></h4>
+                                                        <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">Accessories</a></span>
+                                                        <span class="item-price font-additional font-weight-normal customColor">60.10 USD</span>
+                                                        <a class="item-del hover-focus-color" href="#"><i class="fa fa-trash-o"></i></a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <div class="cart-total text-right font-additional font-weight-normal">Subtotal <span class="customColor">$97.25</span></div>
+                                            <div class="cart-buttons text-right">
+                                                <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">View Cart</button>
+                                                <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Checkout</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="header-nav navbar navbar-main-slide">
+                                <div class="container">
+                                    <i class="fa fa-bars mobileMenuNav mobileMenuSwitcher onlyMobile"></i>
+                                    <nav class="menu-container">
+                                        <i class="fa fa-times close-menu mobileMenuSwitcher onlyMobile"></i>
+                                        <ul class="nav navbar-nav navbar-main">
+                                            <li class="dropdown active">
+                                                <a href="./index-1.html">Inicio</a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a  href="./category.html" >Catalogo</a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a  href="product-details.html">Nosotros </a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a  href="blog.html">Contacto</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </header>
+    </template> 
+    <script>
+        class KoMenu extends Polymer.Element {
+            static get is() {
+                return "ko-menu"
+            }
+        }
+        customElements.define(KoMenu.is, KoMenu);
+    </script>  
+</dom-module>
