@@ -1,3 +1,5 @@
+
+Vue.use(SocialSharing);
 var app = new Vue({
     el: '#app',
     created(){
@@ -5,6 +7,8 @@ var app = new Vue({
         this.getDataProducto();
     },
     data: {
+      ocultar: false,
+      urlHttp: 'https://brainmakers.net',
       currentProduct: null,
       valorFiltroMinimo: 100,
       valorFiltroMaximo: 500000,
@@ -40,6 +44,12 @@ var app = new Vue({
         },
         render(){
             this.productosFiltrados = this.productos.filter(product => product.precio >= this.valorFiltroMinimo && product.precio <= this.valorFiltroMaximo)
+        },
+        pop(){
+            this.ocultar = true;
+        },
+        pop2(){
+            this.ocultar = false;
         }
     },
     computed:{

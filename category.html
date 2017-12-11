@@ -33,6 +33,14 @@
   </head>
   <body class="animated-css" data-scrolling-animations="false">
     <div id="app" class="sp-body">
+        <section class="modal-2">
+            <div>
+                <div>
+                    <img src="http://shop.autismspeaks.org/Shared/images/Product/AUT/AT17012.png" alt="">
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim minima rem ad, iste perspiciatis officia autem nemo voluptatum aut maxime, rerum perferendis vel animi suscipit ab accusantium repellendus. Pariatur, quos!</p>
+            </div>
+        </section>
             <header id="header">         
               <div class="header-middle">
                 <div class="container relative">
@@ -88,7 +96,7 @@
                             </ul>
                             <div class="cart-total text-right font-additional font-weight-normal">Subtotal <span class="customColor">$97.25</span></div>
                             <div class="cart-buttons text-right">
-                                <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">View Cart</button>
+                                <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Carrito</button>
                                 <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Checkout</button>
                             </div>
                         </div>
@@ -102,7 +110,7 @@
                                 <i class="fa fa-times close-menu mobileMenuSwitcher onlyMobile"></i>
                                 <ul class="nav navbar-nav navbar-main">
                                     <li class="dropdown active">
-                                        <a href="./index-1.html">Inicio</a>
+                                        <a href="./index.html">Inicio</a>
                                     </li>
                                     <li class="dropdown">
                                         <a  href="./category.html" >Catalogo</a>
@@ -184,7 +192,7 @@
                                 <a class="popular-product-item" href="product-details.html">
                                     <img class="miniImage" :src="`http://brainmakers.net/mini/${product.foto}`" alt="Product">
                                     <span class="popular-product-item_title font-additional font-weight-bold text-uppercase">{{product.nombre}}</span>
-                                    <span class="popular-product-item_price font-additional color-third">{{product.precio}}</span>
+                                    <span class="popular-product-item_price font-additional color-third">{{product.precio | formatNum}}</span>
                                 </a>
                             </li>
                         </ul>
@@ -214,7 +222,7 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="#">
+                                                        <a href="#" @click="pop">
                                                             <span class="icon-eye" aria-hidden="true"></span>
                                                             <div class="product-item_tip font-additional font-weight-normal text-uppercase customBgColor color-main transition">VISTA PREVIA</div>
                                                         </a>
@@ -223,7 +231,7 @@
                                             </div>
                                             <a href="product-details.html" class="product-item_footer">
                                                 <div class="product-item_title font-additional font-weight-bold text-center text-uppercase">{{product.nombre}}</div>
-                                                <div class="product-item_price font-additional font-weight-normal customColor">{{product.precio}}</div>
+                                                <div class="product-item_price font-additional font-weight-normal customColor">{{product.precio | formatNum}}</div>
                                             </a>
                                         </div>
                                     </li>
@@ -252,7 +260,7 @@
                                           </div>
                                           <a href="product-details.html" class="product-item_footer">
                                               <div class="product-item_title font-additional font-weight-bold text-center text-uppercase">{{product.nombre}}</div>
-                                              <div class="product-item_price font-additional font-weight-normal customColor">{{product.precio}}</div>
+                                              <div class="product-item_price font-additional font-weight-normal customColor">{{product.precio | formatNum}}</div>
                                           </a>
                                       </div>
                                   </li>
@@ -303,7 +311,7 @@
         <section id="subscribe" class="subscribe-row customBgColor subscribe-custom-bg">
             <div class="container">
                 <div class="subscribe-container clearfix wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="subscribe-desc font-additional font-weight-bold color-main">SIGN UP FOR OUR MONTHLY NEWSLETTER</div>
+                    <div class="subscribe-desc font-additional font-weight-bold color-main">suscribete a nuestra tienda</div>
                     <div id="mc_embed_signup" class="subscribe-form">
                         <form action="//templines.us9.list-manage.com/subscribe/post?u=fe9a9cfcf8d73763bcc53f206&amp;id=319cafcc43" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                             <div id="mc_embed_signup_scroll">
@@ -319,7 +327,7 @@
                                     <input type="text" name="b_fe9a9cfcf8d73763bcc53f206_319cafcc43" tabindex="-1" value="">
                                 </div>
                                 <div class="subscribe-button">
-                                    <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary font-additional hvr-wobble-bottom"> SUBSCRIBE </button>
+                                    <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary font-additional hvr-wobble-bottom"> SUSCRIBETE </button>
                                 </div>
                             </div>
                         </form>
@@ -423,6 +431,7 @@
 
     <script src="https://unpkg.com/vue"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+    <script src="js/vue-social-sharing.min.js"></script>
     <script src="js/vue.js"></script>
     <script src="js/modernizr.custom.js"></script>
     <script src="js/jquery.placeholder.min.js"></script>

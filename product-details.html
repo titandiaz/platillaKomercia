@@ -84,7 +84,7 @@
 							  </ul>
 							  <div class="cart-total text-right font-additional font-weight-normal">Subtotal <span class="customColor">$97.25</span></div>
 							  <div class="cart-buttons text-right">
-								  <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">View Cart</button>
+								  <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Carrito</button>
 								  <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Checkout</button>
 							  </div>
 						  </div>
@@ -117,18 +117,7 @@
 			<section id="pageTitleBox" class="paralax breadcrumb-container"  style="background-image: url('media/paralax/1.jpg');">
 				<div class="overlay"></div>
 				<div class="container relative">
-					<h1 class="title font-additional font-weight-normal color-main text-uppercase wow zoomIn" data-wow-delay="0.3s">Women shirt</h1>
-					<ul class="breadcrumb-list wow zoomIn" data-wow-delay="0.3s">
-						<li>
-							<a href="index-1.html" class="font-additional font-weight-normal color-main text-uppercase">HOME</a>
-							<span>/</span>
-						</li>
-						<li>
-							<a href="category.html" class="font-additional font-weight-normal color-main text-uppercase">SHOP</a>
-							<span>/</span>
-						</li>
-						<li class="font-additional font-weight-normal color-main text-uppercase">Shirt details</li>
-					</ul>
+					<h1 class="title font-additional font-weight-normal color-main text-uppercase wow zoomIn" data-wow-delay="0.3s">{{currentProduct.detalle.categoria_producto.nombre_categoria_producto}}</h1>
 				</div>
 			</section>
 			<section id="productDetails" class="product-details">
@@ -224,23 +213,85 @@
 									<ul class="tags-list">
 										<li v-for="categoria in categorias" ><a href="category.html" class="font-main color-third hover-focus-color">{{categoria.nombre_categoria_producto}}</a>,</li>
 									</ul>
-									<h4 class="font-additional font-weight-bold text-uppercase">Share this product</h4>
+									<h4 class="font-additional font-weight-bold text-uppercase">Comparte este producto</h4>
+									<social-sharing :url="`${urlHttp}`"
+									:title="currentProduct.detalle.nombre"
+									:description="currentProduct.info.descripcion"
+									quote="Vue is a progressive framework for building user interfaces."
+									hashtags="vuejs,javascript,framework"
+									twitter-user="vuejs"
+									inline-template>
 									<ul class="social-list">
-										<li><a href="#" class="hover-focus-border hover-focus-bg hvr-rectangle-out before-bg"><span class="social_facebook" aria-hidden="true"></span></a></li>
-										<li><a href="#" class="hover-focus-border hover-focus-bg hvr-rectangle-out before-bg"><span class="social_twitter" aria-hidden="true"></span></a></li>
-										<li><a href="#" class="hover-focus-border hover-focus-bg hvr-rectangle-out before-bg"><span class="social_googleplus" aria-hidden="true"></span></a></li>
-										<li><a href="#" class="hover-focus-border hover-focus-bg hvr-rectangle-out before-bg"><span class="social_pinterest" aria-hidden="true"></span></a></li>
-										<li><a href="#" class="hover-focus-border hover-focus-bg hvr-rectangle-out before-bg"><span class="social_instagram" aria-hidden="true"></span></a></li>
+										<network network="facebook"><li><a class="hover-focus-border hover-focus-bg hvr-rectangle-out before-bg"><span class="social_facebook" aria-hidden="true"></span></a></li></network>
+										<network network="twitter"><li><a class="hover-focus-border hover-focus-bg hvr-rectangle-out before-bg"><span class="social_twitter" aria-hidden="true"></span></a></li></network>
+										<network network="googleplus"><li><a class="hover-focus-border hover-focus-bg hvr-rectangle-out before-bg"><span class="social_googleplus" aria-hidden="true"></span></a></li></network>
+										<network network="pinterest"><li><a class="hover-focus-border hover-focus-bg hvr-rectangle-out before-bg"><span class="social_pinterest" aria-hidden="true"></span></a></li></network>
 									</ul>
+									</social-sharing>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 					
-
+				 <!-- <social-sharing url="https://vuejs.org/"
+                      title="The Progressive JavaScript Framework"
+                      description="Intuitive, Fast and Composable MVVM for building interactive interfaces."
+                      quote="Vue is a progressive framework for building user interfaces."
+                      hashtags="vuejs,javascript,framework"
+                      twitter-user="vuejs"
+                      inline-template>
+				<div>
+					<network network="email">
+						<i class="fa fa-envelope"></i> Email
+					</network>
+					<network network="facebook">
+						<i class="fa fa-facebook"></i> Facebook
+					</network>
+					<network network="googleplus">
+						<i class="fa fa-google-plus"></i> Google +
+					</network>
+					<network network="line">
+						<i class="fa fa-line"></i> Line
+					</network>
+					<network network="linkedin">
+						<i class="fa fa-linkedin"></i> LinkedIn
+					</network>
+					<network network="odnoklassniki">
+						<i class="fa fa-odnoklassniki"></i> Odnoklassniki
+					</network>
+					<network network="pinterest">
+						<i class="fa fa-pinterest"></i> Pinterest
+					</network>
+					<network network="reddit">
+						<i class="fa fa-reddit"></i> Reddit
+					</network>
+					<network network="skype">
+						<i class="fa fa-skype"></i> Skype
+					</network>
+					<network network="sms">
+						<i class="fa fa-commenting-o"></i> SMS
+					</network>
+					<network network="telegram">
+						<i class="fa fa-telegram"></i> Telegram
+					</network>
+					<network network="twitter">
+						<i class="fa fa-twitter"></i> Twitter
+					</network>
+					<network network="vk">
+						<i class="fa fa-vk"></i> VKontakte
+					</network>
+					<network network="weibo">
+						<i class="fa fa-weibo"></i> Weibo
+					</network> 
+					<network network="whatsapp">
+						<i class="fa fa-whatsapp"></i> Whatsapp
+					</network>
+				</div>
+				</social-sharing> -->
 				  
 			</section>
+			
 			<!-- <section id="brandsSlider" class="brands-slider">
 				<div class="container">
 					<h2 class="title font-additional font-weight-bold text-uppercase wow zoomIn" data-wow-delay="0.3s">OUR brandS</h2>
@@ -280,7 +331,7 @@
 			<section id="subscribe" class="subscribe-row customBgColor subscribe-custom-bg">
 				<div class="container">
 					<div class="subscribe-container clearfix wow fadeInUp" data-wow-delay="0.3s">
-						<div class="subscribe-desc font-additional font-weight-bold color-main">SIGN UP FOR OUR MONTHLY NEWSLETTER</div>
+						<div class="subscribe-desc font-additional font-weight-bold color-main">suscribete a nuestra tienda</div>
 						<div id="mc_embed_signup" class="subscribe-form">
 							<form action="//templines.us9.list-manage.com/subscribe/post?u=fe9a9cfcf8d73763bcc53f206&amp;id=319cafcc43" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 								<div id="mc_embed_signup_scroll">
@@ -296,7 +347,7 @@
 										<input type="text" name="b_fe9a9cfcf8d73763bcc53f206_319cafcc43" tabindex="-1" value="">
 									</div>
 									<div class="subscribe-button">
-										<button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary font-additional hvr-wobble-bottom"> SUBSCRIBE </button>
+										<button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary font-additional hvr-wobble-bottom"> SUSCRIBETE </button>
 									</div>
 								</div>
 							</form>
@@ -400,8 +451,8 @@
 
     <script src="https://unpkg.com/vue"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
-	<script src="/dist/vue-social-sharing.min.js"></script>
-    <script src="js/vue.js"></script>
+	<script src="js/vue-social-sharing.min.js"></script>
+	<script src="js/vue.js"></script>
 		<script src="js/modernizr.custom.js"></script>
 		<script src="js/jquery.placeholder.min.js"></script>
 		<script src="js/smoothscroll.min.js"></script>
