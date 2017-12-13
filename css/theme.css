@@ -855,7 +855,7 @@ ul.product-item_info li a:hover .product-item_tip{
 
 /* Slider */
 .slider-container{
-	padding: 100px 0 58px;
+	padding: 100px 0 0;
 }
 .home-construction-v3 .slider-container{
 	padding-top: 55px;
@@ -893,7 +893,6 @@ ul.product-item_info li a:hover .product-item_tip{
 	width: 2px;
 }
 .owl-bottom-pagination.owl-theme .owl-controls .owl-buttons{
-	margin-top: 29px;
 	position: relative;
 }
 .owl-top-pagination.owl-theme .owl-controls .owl-buttons{

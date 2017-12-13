@@ -72,7 +72,7 @@ h1.title{
 .sidebar-slider{
 	float: left;
 	width: 100%;
-	padding: 18px 5px 15px;
+	padding: 18px 5px 30px;
 }
 .sidebar-slider.sidebar-slider_btm_padding{
 	padding-bottom: 60px;
@@ -187,7 +187,6 @@ ul.categories-tree li a{
 }
 
 /* Categories Filter */
-.content-box{}
 .category-filter{
 	border-bottom: 1px solid #ececec;
 	padding-bottom: 21px;

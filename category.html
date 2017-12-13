@@ -33,14 +33,6 @@
   </head>
   <body class="animated-css" data-scrolling-animations="false">
     <div id="app" class="sp-body">
-        <section class="modal-2">
-            <div>
-                <div>
-                    <img src="http://shop.autismspeaks.org/Shared/images/Product/AUT/AT17012.png" alt="">
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim minima rem ad, iste perspiciatis officia autem nemo voluptatum aut maxime, rerum perferendis vel animi suscipit ab accusantium repellendus. Pariatur, quos!</p>
-            </div>
-        </section>
             <header id="header">         
               <div class="header-middle">
                 <div class="container relative">
@@ -126,12 +118,6 @@
                         </div>
                     </div>
                 </header>
-        <section id="pageTitleBox" class="paralax breadcrumb-container"  style="background-image: url('media/paralax/3.jpg');">
-            <div class="overlay"></div>
-            <div class="container relative">
-                <h1 class="title font-additional font-weight-normal color-main text-uppercase wow zoomIn" data-wow-delay="0.3s">PRODUCTOS</h1>
-            </div>
-        </section>
         <section id="pageContent" class="page-content">
             <div class="container">
                 <div class="row">
@@ -141,39 +127,8 @@
                             <li v-for="categoria in categorias">
                                 <a href="#" class="font-additional font-weight-normal hover-focus-color color-third text-uppercase">
                                     <span class="pull-left">{{categoria.nombre_categoria_producto}}</span>
-                                    <span class="pull-right">(8)</span>
                                 </a>
                             </li>
-                            <!-- <li>
-                                <a href="#" class="font-additional font-weight-normal hover-focus-color color-third text-uppercase">
-                                    <span class="pull-left">FOOTWEAR</span>
-                                    <span class="pull-right">(19)</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="font-additional font-weight-normal hover-focus-color color-third text-uppercase">
-                                    <span class="pull-left">JEWELLRY</span>
-                                    <span class="pull-right">(9)</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="font-additional font-weight-normal hover-focus-color color-third text-uppercase">
-                                    <span class="pull-left">MEN</span>
-                                    <span class="pull-right">(7)</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="font-additional font-weight-normal hover-focus-color color-third text-uppercase">
-                                    <span class="pull-left">NEW</span>
-                                    <span class="pull-right">(5)</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="font-additional font-weight-normal hover-focus-color color-third text-uppercase">
-                                    <span class="pull-left">WOMEN</span>
-                                    <span class="pull-right">(7)</span>
-                                </a>
-                            </li> -->
                         </ul>
                         <h3 class="sidebar-title font-additional font-weight-bold text-uppercase customColor wow fadeInUp" data-wow-delay="0.3s">por precio</h3>
                         <div class="sidebar-slider wow fadeInUp" data-wow-delay="0.3s">
@@ -214,19 +169,7 @@
                                             <div class="product-item_body">
                                                 <img class="product-item_image" :src="`http://brainmakers.net/tumb/${product.foto}`" alt="Product">
                                                 <a class="product-item_link" href="product-details.html"></a>
-                                                <ul class="product-item_info transition">
-                                                    <li>
-                                                        <a href="#">
-                                                            <span class="icon-bag" aria-hidden="true"></span>
-                                                            <div class="product-item_tip font-additional font-weight-normal text-uppercase customBgColor color-main transition">AGREGAR</div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" @click="pop">
-                                                            <span class="icon-eye" aria-hidden="true"></span>
-                                                            <div class="product-item_tip font-additional font-weight-normal text-uppercase customBgColor color-main transition">VISTA PREVIA</div>
-                                                        </a>
-                                                    </li>												
+                                                <ul class="product-item_info transition">												
                                                 </ul>
                                             </div>
                                             <a href="product-details.html" class="product-item_footer">
@@ -243,20 +186,6 @@
                                           <div class="product-item_body">
                                               <img class="product-item_image" :src="`http://brainmakers.net/tumb/${product.foto}`" alt="Product">
                                               <a class="product-item_link" href="product-details.html"></a>
-                                              <ul class="product-item_info transition">
-                                                  <li>
-                                                      <a href="#">
-                                                          <span class="icon-bag" aria-hidden="true"></span>
-                                                          <div class="product-item_tip font-additional font-weight-normal text-uppercase customBgColor color-main transition">AGREGAR</div>
-                                                      </a>
-                                                  </li>
-                                                  <li>
-                                                      <a href="#">
-                                                          <span class="icon-eye" aria-hidden="true"></span>
-                                                          <div class="product-item_tip font-additional font-weight-normal text-uppercase customBgColor color-main transition">VISTA PREVIA</div>
-                                                      </a>
-                                                  </li>												
-                                              </ul>
                                           </div>
                                           <a href="product-details.html" class="product-item_footer">
                                               <div class="product-item_title font-additional font-weight-bold text-center text-uppercase">{{product.nombre}}</div>
@@ -272,42 +201,6 @@
                 </div>
             </div>
         </section>
-        <!-- <section id="brandsSlider" class="brands-slider">
-            <div class="container">
-                <h2 class="title font-additional font-weight-bold text-uppercase wow zoomIn" data-wow-delay="0.3s">OUR brandS</h2>
-                <div class="starSeparatorBox clearfix">
-                    <div class="starSeparator wow zoomIn" data-wow-delay="0.3s">
-                        <span aria-hidden="true" class="icon-star"></span>
-                    </div>
-                    <div id="owl-product-slider" class="enable-owl-carousel owl-product-slider owl-bottom-pagination owl-carousel owl-theme wow fadeInUp" data-wow-delay="0.7s" data-navigation="true" data-pagination="false" data-single-item="false" data-auto-play="false" data-transition-style="false" data-main-text-animation="false" data-min600="2" data-min800="3" data-min1200="6">
-                        <div class="item">
-                            <a href="#"><img class="brands-slider_logo" src="media/brands/7.jpg" alt="Brand"></a>
-                        </div>
-                        <div class="item">
-                            <a href="#"><img class="brands-slider_logo" src="media/brands/8.jpg" alt="Brand"></a>
-                        </div>
-                        <div class="item">
-                            <a href="#"><img class="brands-slider_logo" src="media/brands/9.jpg" alt="Brand"></a>
-                        </div>
-                        <div class="item">
-                            <a href="#"><img class="brands-slider_logo" src="media/brands/10.jpg" alt="Brand"></a>
-                        </div>
-                        <div class="item">
-                            <a href="#"><img class="brands-slider_logo" src="media/brands/11.jpg" alt="Brand"></a>
-                        </div>
-                        <div class="item">
-                            <a href="#"><img class="brands-slider_logo" src="media/brands/12.jpg" alt="Brand"></a>
-                        </div>
-                        <div class="item">
-                            <a href="#"><img class="brands-slider_logo" src="media/brands/9.jpg" alt="Brand"></a>
-                        </div>
-                        <div class="item">
-                            <a href="#"><img class="brands-slider_logo" src="media/brands/10.jpg" alt="Brand"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
         <section id="subscribe" class="subscribe-row customBgColor subscribe-custom-bg">
             <div class="container">
                 <div class="subscribe-container clearfix wow fadeInUp" data-wow-delay="0.3s">
@@ -342,7 +235,7 @@
             </a>
             <div class="footer-top">
                 <div class="container">
-                    <div class="row">
+                    <div class="row container-row">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInLeft" data-wow-delay="0.3s">
                             <a href="index.html" class="footer-top_logo"></a>
                             <div class="footer-top_container clearfix">
@@ -352,19 +245,6 @@
                                     <li v-show="tienda.red_youtube"><a :href="tienda.red_youtube"><span class="social_youtube" aria-hidden="true"></span></a></li>
                                     <li v-show="tienda.red_instagram"><a :href="tienda.red_instagram"><span class="social_instagram" aria-hidden="true"></span></a></li>
                                     <li v-show="tienda.red_facebook"><a :href="tienda.red_facebook"><span class="social_facebook" aria-hidden="true"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInUp" data-wow-delay="0.3s">
-                            <h4 class="footer-top_title color-main font-additional font-weight-bold text-uppercase">ENLACES</h4>
-                            <div class="footer-top_container clearfix">
-                                <ul class="footer-nav">
-                                    <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> My Account</a></li>
-                                    <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Order History</a></li>
-                                    <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> My Wishlist</a></li>
-                                    <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Order Tracking</a></li>
-                                    <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Shipping Information</a></li>
-                                    <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Gift Vouchers</a></li>
                                 </ul>
                             </div>
                         </div>

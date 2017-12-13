@@ -296,8 +296,8 @@ ul.header-cart_product_list{
 }
 .header-nav{
 	border-color: #ececec;
-	border-width: 1px 0 0;
-	border-style: solid none none;
+	border-width: 1px 0 1px;
+	border-style: solid none solid;
 	margin: 0;
 	border-radius: 0;
 	-moz-border-radius: 0;

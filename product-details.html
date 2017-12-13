@@ -15,8 +15,8 @@
 		<link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color2.css" title="color2" media="all" />
 		<link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color3.css" title="color3" media="all" />
 		<link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color4.css" title="color4" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color5.css" title="color5" media="all" />
-    <link rel="stylesheet" href="css/vue.css">
+		<link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color5.css" title="color5" media="all" />
+		<link rel="stylesheet" href="css/vue.css">
 
 		<script src="js/jquery-1.11.2.min.js"></script>
 		<script src="js/jquery-ui.min.js"></script>
@@ -114,12 +114,6 @@
 						  </div>
 				</div>
 			</header>
-			<section id="pageTitleBox" class="paralax breadcrumb-container"  style="background-image: url('media/paralax/1.jpg');">
-				<div class="overlay"></div>
-				<div class="container relative">
-					<h1 class="title font-additional font-weight-normal color-main text-uppercase wow zoomIn" data-wow-delay="0.3s">{{currentProduct.detalle.categoria_producto.nombre_categoria_producto}}</h1>
-				</div>
-			</section>
 			<section id="productDetails" class="product-details">
 				<div class="container">
 					<div class="row">
@@ -150,13 +144,6 @@
 							<div class="product-options_header clearfix wow fadeInUp" data-wow-delay="0.3s">
 								<h3 class="font-additional font-weight-bold text-uppercase">{{currentProduct.detalle.nombre}}</h3>
 								<div class="product-item_price font-additional font-weight-normal customColor">{{currentProduct.detalle.precio | formatNum}}</div>
-								<ul class="rating">
-									<li><span aria-hidden="true" class="icon-star customColor"></span></li>
-									<li><span aria-hidden="true" class="icon-star customColor"></span></li>
-									<li><span aria-hidden="true" class="icon-star customColor"></span></li>
-									<li><span aria-hidden="true" class="icon-star customColor"></span></li>
-									<li><span aria-hidden="true" class="icon-star color-additional"></span></li>
-								</ul>
 							</div>
 							<div class="product-options_body clearfix wow fadeInUp" data-wow-delay="0.3s">
 								<h4 class="font-additional font-weight-bold text-uppercase">DESCRIPCIÓN DEL PRODUCTO</h4>
@@ -232,102 +219,8 @@
 							</div>
 						</div>
 					</div>
-				</div>
-					
-				 <!-- <social-sharing url="https://vuejs.org/"
-                      title="The Progressive JavaScript Framework"
-                      description="Intuitive, Fast and Composable MVVM for building interactive interfaces."
-                      quote="Vue is a progressive framework for building user interfaces."
-                      hashtags="vuejs,javascript,framework"
-                      twitter-user="vuejs"
-                      inline-template>
-				<div>
-					<network network="email">
-						<i class="fa fa-envelope"></i> Email
-					</network>
-					<network network="facebook">
-						<i class="fa fa-facebook"></i> Facebook
-					</network>
-					<network network="googleplus">
-						<i class="fa fa-google-plus"></i> Google +
-					</network>
-					<network network="line">
-						<i class="fa fa-line"></i> Line
-					</network>
-					<network network="linkedin">
-						<i class="fa fa-linkedin"></i> LinkedIn
-					</network>
-					<network network="odnoklassniki">
-						<i class="fa fa-odnoklassniki"></i> Odnoklassniki
-					</network>
-					<network network="pinterest">
-						<i class="fa fa-pinterest"></i> Pinterest
-					</network>
-					<network network="reddit">
-						<i class="fa fa-reddit"></i> Reddit
-					</network>
-					<network network="skype">
-						<i class="fa fa-skype"></i> Skype
-					</network>
-					<network network="sms">
-						<i class="fa fa-commenting-o"></i> SMS
-					</network>
-					<network network="telegram">
-						<i class="fa fa-telegram"></i> Telegram
-					</network>
-					<network network="twitter">
-						<i class="fa fa-twitter"></i> Twitter
-					</network>
-					<network network="vk">
-						<i class="fa fa-vk"></i> VKontakte
-					</network>
-					<network network="weibo">
-						<i class="fa fa-weibo"></i> Weibo
-					</network> 
-					<network network="whatsapp">
-						<i class="fa fa-whatsapp"></i> Whatsapp
-					</network>
-				</div>
-				</social-sharing> -->
-				  
+				</div>				  
 			</section>
-			
-			<!-- <section id="brandsSlider" class="brands-slider">
-				<div class="container">
-					<h2 class="title font-additional font-weight-bold text-uppercase wow zoomIn" data-wow-delay="0.3s">OUR brandS</h2>
-					<div class="starSeparatorBox clearfix">
-						<div class="starSeparator wow zoomIn" data-wow-delay="0.3s">
-							<span aria-hidden="true" class="icon-star"></span>
-						</div>
-						<div id="owl-product-slider" class="enable-owl-carousel owl-product-slider owl-bottom-pagination owl-carousel owl-theme wow fadeInUp" data-wow-delay="0.7s" data-navigation="true" data-pagination="false" data-single-item="false" data-auto-play="false" data-transition-style="false" data-main-text-animation="false" data-min600="2" data-min800="3" data-min1200="6">
-							<div class="item">
-								<a href="#"><img class="brands-slider_logo" src="media/brands/7.jpg" alt="Brand"></a>
-							</div>
-							<div class="item">
-								<a href="#"><img class="brands-slider_logo" src="media/brands/8.jpg" alt="Brand"></a>
-							</div>
-							<div class="item">
-								<a href="#"><img class="brands-slider_logo" src="media/brands/9.jpg" alt="Brand"></a>
-							</div>
-							<div class="item">
-								<a href="#"><img class="brands-slider_logo" src="media/brands/10.jpg" alt="Brand"></a>
-							</div>
-							<div class="item">
-								<a href="#"><img class="brands-slider_logo" src="media/brands/11.jpg" alt="Brand"></a>
-							</div>
-							<div class="item">
-								<a href="#"><img class="brands-slider_logo" src="media/brands/12.jpg" alt="Brand"></a>
-							</div>
-							<div class="item">
-								<a href="#"><img class="brands-slider_logo" src="media/brands/9.jpg" alt="Brand"></a>
-							</div>
-							<div class="item">
-								<a href="#"><img class="brands-slider_logo" src="media/brands/10.jpg" alt="Brand"></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section> -->
 			<section id="subscribe" class="subscribe-row customBgColor subscribe-custom-bg">
 				<div class="container">
 					<div class="subscribe-container clearfix wow fadeInUp" data-wow-delay="0.3s">
@@ -356,121 +249,108 @@
 				</div>
 			</section>
 			<footer id="footer">
-        <a class="goToTop font-additional color-main text-uppercase" href="#" id="scrollTop">
-          <i class="fa fa-angle-up"></i>
-          <span>Subir</span>
-        </a>
-        <div class="footer-top">
-          <div class="container">
-              <div class="row">
-                  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInLeft" data-wow-delay="0.3s">
-                    <a href="index.html" class="footer-top_logo"></a>
-                    <div class="footer-top_container clearfix">
-                      <span class="font-main font-weight-normal color-additional">{{tienda.descripcion}}</span>
-                      <ul class="footer-social-list">
-                        <li v-show="tienda.red_twitter"><a :href="tienda.red_twitter"><span class="social_twitter" aria-hidden="true"></span></a></li>
-                        <li v-show="tienda.red_youtube"><a :href="tienda.red_youtube"><span class="social_youtube" aria-hidden="true"></span></a></li>
-                        <li v-show="tienda.red_instagram"><a :href="tienda.red_instagram"><span class="social_instagram" aria-hidden="true"></span></a></li>
-                        <li v-show="tienda.red_facebook"><a :href="tienda.red_facebook"><span class="social_facebook" aria-hidden="true"></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInUp" data-wow-delay="0.3s">
-                    <h4 class="footer-top_title color-main font-additional font-weight-bold text-uppercase">ENLACES</h4>
-                    <div class="footer-top_container clearfix">
-                      <ul class="footer-nav">
-                        <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> My Account</a></li>
-                        <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Order History</a></li>
-                        <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> My Wishlist</a></li>
-                        <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Order Tracking</a></li>
-                        <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Shipping Information</a></li>
-                        <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Gift Vouchers</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInUp" data-wow-delay="0.3s">
-                      <h4 class="footer-top_title color-main font-additional font-weight-bold text-uppercase">INFORMACIÓN</h4>
-                      <div class="footer-top_container clearfix">
-                          <ul class="footer-nav">
-                              <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> About us</a></li>
-                              <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Delivery Information</a></li>
-                              <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Terms & Conditions</a></li>
-                              <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Privacy Policy</a></li>
-                              <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Contact us</a></li>
-                              <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Return Policy</a></li>
-                          </ul>
-                      </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInRight" data-wow-delay="0.3s">
-                      <h4 class="footer-top_title color-main font-additional font-weight-bold text-uppercase">CONTÁCTENOS</h4>
-                      <div class="footer-top_container clearfix">
-                          <ul class="footer-contact">
-                              <li class="font-main font-weight-normal color-additional">
-                                  <span class="icon_pin" aria-hidden="true"></span>
-                                  {{tienda.direccion}} <br>New York 226688
-                              </li>
-                              <li class="font-main font-weight-normal color-additional oneLine">
-                                  <span class="icon_phone" aria-hidden="true"></span>
-                                  {{tienda.telefono}}
-                              </li>
-                              <li class="font-main font-weight-normal color-additional oneLine">
-                                  <span class="icon_mail" aria-hidden="true"></span>
-                                  {{tienda.email_tienda}}
-                              </li>
-                              <li class="font-main font-weight-normal color-additional">
-                                  <span class="icon_clock" aria-hidden="true"></span>
-                                  Mon to Sat : 9:25 AM - 7:30 PM <br>Sun : 11:30 PM - 4:30 PM
-                              </li>										
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix">
-                        <span class="footer_copyright color-additional font-main font-weight-light wow fadeInLeft" data-wow-delay="0.3s">Creado con <span class="icon_heart customColor" aria-hidden="true"></span> por <span class="font-main font-weight-semibold">Komercia</span> &copy; 2018 Todos los Derechos Reservados</span>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix">
-                        <ul class="footer-payments pull-right wow fadeInRight" data-wow-delay="0.3s">
-                            <li><img src="media/payments/1.jpg" alt="Payments"></li>
-                            <li><img src="media/payments/2.jpg" alt="Payments"></li>
-                            <li><img src="media/payments/3.jpg" alt="Payments"></li>
-                            <li><img src="media/payments/4.jpg" alt="Payments"></li>
-                            <li><img src="media/payments/5.jpg" alt="Payments"></li>
-                            <li><img src="media/payments/6.jpg" alt="Payments"></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+				<a class="goToTop font-additional color-main text-uppercase" href="#" id="scrollTop">
+					<i class="fa fa-angle-up"></i>
+					<span>Subir</span>
+				</a>
+				<div class="footer-top">
+					<div class="container">
+						<div class="row container-row">
+							<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInLeft" data-wow-delay="0.3s">
+								<a href="index.html" class="footer-top_logo"></a>
+								<div class="footer-top_container clearfix">
+									<span class="font-main font-weight-normal color-additional">{{tienda.descripcion}}</span>
+									<ul class="footer-social-list">
+										<li v-show="tienda.red_twitter"><a :href="tienda.red_twitter"><span class="social_twitter" aria-hidden="true"></span></a></li>
+										<li v-show="tienda.red_youtube"><a :href="tienda.red_youtube"><span class="social_youtube" aria-hidden="true"></span></a></li>
+										<li v-show="tienda.red_instagram"><a :href="tienda.red_instagram"><span class="social_instagram" aria-hidden="true"></span></a></li>
+										<li v-show="tienda.red_facebook"><a :href="tienda.red_facebook"><span class="social_facebook" aria-hidden="true"></span></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInUp" data-wow-delay="0.3s">
+								<h4 class="footer-top_title color-main font-additional font-weight-bold text-uppercase">INFORMACIÓN</h4>
+								<div class="footer-top_container clearfix">
+									<ul class="footer-nav">
+										<li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> About us</a></li>
+										<li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Delivery Information</a></li>
+										<li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Terms & Conditions</a></li>
+										<li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Privacy Policy</a></li>
+										<li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Contact us</a></li>
+										<li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Return Policy</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInRight" data-wow-delay="0.3s">
+								<h4 class="footer-top_title color-main font-additional font-weight-bold text-uppercase">CONTÁCTENOS</h4>
+								<div class="footer-top_container clearfix">
+									<ul class="footer-contact">
+										<li class="font-main font-weight-normal color-additional">
+											<span class="icon_pin" aria-hidden="true"></span>
+											{{tienda.direccion}} <br>New York 226688
+										</li>
+										<li class="font-main font-weight-normal color-additional oneLine">
+											<span class="icon_phone" aria-hidden="true"></span>
+											{{tienda.telefono}}
+										</li>
+										<li class="font-main font-weight-normal color-additional oneLine">
+											<span class="icon_mail" aria-hidden="true"></span>
+											{{tienda.email_tienda}}
+										</li>
+										<li class="font-main font-weight-normal color-additional">
+											<span class="icon_clock" aria-hidden="true"></span>
+											Mon to Sat : 9:25 AM - 7:30 PM <br>Sun : 11:30 PM - 4:30 PM
+										</li>										
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix">
+								<span class="footer_copyright color-additional font-main font-weight-light wow fadeInLeft" data-wow-delay="0.3s">Creado con <span class="icon_heart customColor" aria-hidden="true"></span> por <span class="font-main font-weight-semibold">Komercia</span> &copy; 2018 Todos los Derechos Reservados</span>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix">
+								<ul class="footer-payments pull-right wow fadeInRight" data-wow-delay="0.3s">
+									<li><img src="media/payments/1.jpg" alt="Payments"></li>
+									<li><img src="media/payments/2.jpg" alt="Payments"></li>
+									<li><img src="media/payments/3.jpg" alt="Payments"></li>
+									<li><img src="media/payments/4.jpg" alt="Payments"></li>
+									<li><img src="media/payments/5.jpg" alt="Payments"></li>
+									<li><img src="media/payments/6.jpg" alt="Payments"></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
 		</div>
 
     <script src="https://unpkg.com/vue"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
 	<script src="js/vue-social-sharing.min.js"></script>
 	<script src="js/vue.js"></script>
-		<script src="js/modernizr.custom.js"></script>
-		<script src="js/jquery.placeholder.min.js"></script>
-		<script src="js/smoothscroll.min.js"></script>
-		<script src="js/classie.js"></script>
-		<!--Owl Carousel-->
-	    <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
-	    <!-- bxSlider -->
-	    <script src="plugins/bxslider/jquery.bxslider.min.js"></script>
-		<!--Switcher-->
-		<script src="plugins/switcher/js/bootstrap-select.js"></script> 
-		<script src="plugins/switcher/js/evol.colorpicker.min.js" type="text/javascript"></script> 
-		<script src="plugins/switcher/js/dmss.js"></script>
-	    <!-- SCRIPTS -->
-	    <script type="text/javascript" src="plugins/isotope/jquery.isotope.min.js"></script> 
+	<script src="js/modernizr.custom.js"></script>
+	<script src="js/jquery.placeholder.min.js"></script>
+	<script src="js/smoothscroll.min.js"></script>
+	<script src="js/classie.js"></script>
+	<!--Owl Carousel-->
+	<script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+	<!-- bxSlider -->
+	<script src="plugins/bxslider/jquery.bxslider.min.js"></script>
+	<!--Switcher-->
+	<script src="plugins/switcher/js/bootstrap-select.js"></script> 
+	<script src="plugins/switcher/js/evol.colorpicker.min.js" type="text/javascript"></script> 
+	<script src="plugins/switcher/js/dmss.js"></script>
+	<!-- SCRIPTS -->
+	<script type="text/javascript" src="plugins/isotope/jquery.isotope.min.js"></script> 
 
-		<!--THEME--> 
-		<script src="js/wow.min.js"></script>
-		<script src="js/cssua.min.js"></script>
+	<!--THEME--> 
+	<script src="js/wow.min.js"></script>
+	<script src="js/cssua.min.js"></script>
     <script src="js/theme.js"></script> 
 	</body>
 </html>

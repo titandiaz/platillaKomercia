@@ -18,3 +18,7 @@
     max-width: 80px;
     max-height: 75px;
 }
+.container-row {
+    display: flex;
+    justify-content: space-around;
+}

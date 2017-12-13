@@ -156,24 +156,10 @@
 								<div v-if="product" class="product-item hvr-underline-from-center">
 									<div class="product-item_body product-border">
 										<img alt="Product" :src="`http://brainmakers.net/tumb/${product.foto}`" class="product-item_image">									
-										<ul class="product-item_info transition">
-											<li>
-												<a href="#">
-													<span aria-hidden="true" class="icon-bag"></span>
-													<div class="product-item_tip font-additional font-weight-normal text-uppercase customBgColor color-main transition">AGREGAR</div>
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<span aria-hidden="true" class="icon-eye"></span>
-													<div class="product-item_tip font-additional font-weight-normal text-uppercase customBgColor color-main transition">QUICK VIEW</div>
-												</a>
-											</li>													
-										</ul>
 									</div>
 									<a class="product-item_footer" href="product-details.html">
 										<div class="product-item_title font-additional font-weight-bold text-center text-uppercase">{{product.nombre}}</div>
-										<div class="product-item_price font-additional font-weight-normal customColor">{{product.precio}}</div>
+										<div class="product-item_price font-additional font-weight-normal customColor">{{product.precio | formatNum}}</div>
 									</a>
 								</div>
 							</div>
@@ -212,11 +198,11 @@
 			<footer id="footer">
 				<a class="goToTop font-additional color-main text-uppercase" href="#" id="scrollTop">
 					<i class="fa fa-angle-up"></i>
-					<span>Top</span>
+					<span>Subir</span>
 				</a>
 				<div class="footer-top">
 					<div class="container">
-						<div class="row">
+						<div class="row container-row">
 							<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInLeft" data-wow-delay="0.3s">
 								<a href="index.html" class="footer-top_logo"></a>
 								<div class="footer-top_container clearfix">
@@ -226,19 +212,6 @@
 										<li v-show="tienda.red_youtube"><a :href="tienda.red_youtube"><span class="social_youtube" aria-hidden="true"></span></a></li>
 										<li v-show="tienda.red_instagram"><a :href="tienda.red_instagram"><span class="social_instagram" aria-hidden="true"></span></a></li>
 										<li v-show="tienda.red_facebook"><a :href="tienda.red_facebook"><span class="social_facebook" aria-hidden="true"></span></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInUp" data-wow-delay="0.3s">
-								<h4 class="footer-top_title color-main font-additional font-weight-bold text-uppercase">QUICK LINKS</h4>
-								<div class="footer-top_container clearfix">
-									<ul class="footer-nav">
-										<li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> My Account</a></li>
-										<li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Order History</a></li>
-										<li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> My Wishlist</a></li>
-										<li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Order Tracking</a></li>
-										<li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Shipping Information</a></li>
-										<li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Gift Vouchers</a></li>
 									</ul>
 								</div>
 							</div>
