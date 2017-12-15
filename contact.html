@@ -17,6 +17,12 @@
     <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color3.css" title="color3" media="all" />
     <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color4.css" title="color4" media="all" />
     <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color5.css" title="color5" media="all" />
+    <!-- <link rel="stylesheet" href="external/bootstrap/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="external/slick/slick.min.css">
+    <link rel="stylesheet" href="external/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="css/template.css">
+
+
     <link rel="stylesheet" href="css/vue.css">
 
     <!-- <link rel="import" href="./ko-menu.html"> -->
@@ -34,35 +40,17 @@
 </head>
 
 <body class="animated-css" data-scrolling-animations="false">
-    <div class="sp-body" id="app">
-        <!-- Loader Landing Page -->
-        <div id="ip-container" class="ip-container">
-            <div class="ip-header">
-                <div class="ip-loader">
-                    <div class="text-center">
-                        <div class="ip-logo">
-                            <a class="logo"></a>
-                        </div>
-                    </div>
-                    <svg class="ip-inner" width="60px" height="60px" viewBox="0 0 80 80">
-                      <path class="ip-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,39.3,10z"/>
-                      <path id="ip-loader-circle" class="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
-                    </svg>
-                </div>
-            </div>
-        </div>
-        <!-- Loader end -->
+    <div id="app" class="sp-body">
         <header id="header">
-
             <div class="header-middle">
                 <div class="container relative">
                     <a href="index.html" class="logo pull-left"></a>
                     <div class="header-search">
                         <div class="header-search_filter">
                             <select class="formDropdown font-additional font-weight-normal" name="filterby" id="filterby">
-                  <option value="0">Filtrar por</option>
-                  <option v-for="categoria in categorias" :value="categoria.id">{{categoria.nombre_categoria_producto}}</option>
-                </select>
+                                <option value="0">Filtrar por</option>
+                                <option v-for="categoria in categorias" :value="categoria.id">{{categoria.nombre_categoria_producto}}</option>
+                            </select>
                             <i class="fa fa-angle-down customColor"></i>
                         </div>
                         <div class="header-search_form">
@@ -72,8 +60,8 @@
                                     <input type="search" class="product-search_field font-main font-weight-normal" id="searchQuery" placeholder="Nombre del Producto ...">
                                 </div>
                                 <button type="submit" class="product-search_btn hvr-border-fade">
-                    <i class="fa fa-search"></i>
-                  </button>
+                                    <i class="fa fa-search"></i>
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -85,7 +73,7 @@
                             <span class="eli arrow_right customColor" aria-hidden="true"></span>
                         </div>
                         <div class="header-cart_product clearfix">
-                            <h3 class="font-additional font-weight-bold">Recently added item(s)</h3>
+                            <h3 class="font-additional font-weight-bold">Productos agregados</h3>
                             <ul class="header-cart_product_list">
                                 <li>
                                     <div class="header-cart_product_list_item clearfix">
@@ -108,7 +96,7 @@
                             </ul>
                             <div class="cart-total text-right font-additional font-weight-normal">Subtotal <span class="customColor">$97.25</span></div>
                             <div class="cart-buttons text-right">
-                                <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">View Cart</button>
+                                <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Carrito</button>
                                 <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Checkout</button>
                             </div>
                         </div>
@@ -138,44 +126,78 @@
                 </div>
             </div>
         </header>
-        <section id="main-slider">
-            <div id="owl-main-slider" class="enable-owl-carousel owl-main-slider owl-carousel owl-theme" data-navigation="true" data-pagination="false" data-single-item="true" data-auto-play="7000" data-transition-style="fadeUp" data-main-text-animation="true" data-after-init-delay="4000"
-                data-after-move-delay="500" data-stop-on-hover="true">
-                <div v-for="banner in banners" class="item slide1">
-                    <img :src="`https://brainmakers.net/banners/${banner.ruta_banner}`" alt="Slide 1">
+        <div id="pageContent">
+            <div class="container offset-18">
+                <h1 class="block-title large  text-uppercase">Estar en contacto</h1>
+                <div class="information-block">
+                    Póngase en contacto con nosotros para cualquier pregunta adicional, posibles proyectos y asociaciones comerciales.
                 </div>
-            </div>
-        </section>
-        <section id="slider" class="slider-container">
-            <div class="container">
-                <h2 class="title font-additional font-weight-bold text-uppercase wow zoomIn" data-wow-delay="0.3s">NUEVOS PRODUCTOS</h2>
-                <span class="subTitle font-additional font-weight-normal text-uppercase wow zoomIn" data-wow-delay="0.3s">SED FELIS PRAESENT DONEC BLAND</span>
-                <div class="starSeparatorBox clearfix">
-                    <div class="starSeparator wow zoomIn" data-wow-delay="0.3s">
-                        <span aria-hidden="true" class="icon-star"></span>
-                    </div>
-                    <div id="owl-product-slider" class="enable-owl-carousel owl-product-slider owl-bottom-pagination owl-carousel owl-theme wow fadeInUp" data-wow-delay="0.7s" data-navigation="true" data-pagination="false" data-single-item="false" data-auto-play="false"
-                        data-transition-style="false" data-main-text-animation="false" data-min600="2" data-min800="3" data-min1200="4">
-                        <div v-for="product in productos.slice(0, 8)" class="item">
-                            <div v-if="product" class="product-item hvr-underline-from-center">
-                                <div class="product-item_body product-border">
-                                    <img alt="Product" :src="`http://brainmakers.net/tumb/${product.foto}`" class="product-item_image">
-                                </div>
-                                <a class="product-item_footer" href="product-details.html">
-                                    <div class="product-item_title font-additional font-weight-bold text-center text-uppercase">{{product.nombre}}</div>
-                                    <div class="product-item_price font-additional font-weight-normal customColor">{{product.precio | formatNum}}</div>
-                                </a>
+                <div class="row">
+                    <div class="col-sm-5 offset-98">
+                        <h2 class="block-title text-left   font-weight-bold text-uppercase font-additional">CONTACTENOS</h2>
+                        <div class="contact-layout-02">
+                            <ul class="list-information">
+                                <li>
+                                    <span class="icon fa fa-home"></span> Dirección : {{tienda.direccion}}
+                                </li>
+                                <li>
+                                    <span class="icon fa fa-phone"></span> Telefono: {{tienda.telefono}}
+                                </li>
+                                <li>
+                                    <span class="icon fa fa-clock-o"></span> Hours: 7 Days a week from 10:00 am to 6:00 pm
+                                </li>
+                                <li>
+                                    <span class="icon fa fa-envelope"></span> Correo: <a href="mailto:info@mydomain.com">{{tienda.email_tienda}}</a>
+                                </li>
+                            </ul>
+                            <div class="social-icon-round">
+                                <ul>
+                                    <li>
+                                        <a class="icon fa fa-facebook" href="http://www.facebook.com/"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon fa fa-twitter" href="http://www.twitter.com/"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon fa fa-google-plus" href="http://www.google.com/"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon fa fa-instagram" href="https://instagram.com/"></a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="col-sm-7 offset-98">
+                        <h2 class="block-title text-left  font-weight-bold text-uppercase font-additional">Formulario de Contacto</h2>
+                        <form action="#" class="contact-form">
+                            <div class="form-group">
+                                <label for="inputName">Nombre</label>
+                                <input type="text" class="form-control" id="inputName" placeholder="Nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail">Correo electrónico</label>
+                                <input type="text" class="form-control" id="inputEmail" placeholder="Correo">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName">Mensaje</label>
+                                <textarea class="form-control" rows="8" placeholder="Mensaje" id="textareaMessage"></textarea>
+                            </div>
+                            <button class="btn" type="submit">ENVIAR</button>
+                        </form>
                     </div>
                 </div>
             </div>
-        </section>
-        <section id="subscribe" class="subscribe-row">
+            <div class="container-fluid">
+                <div class="row contact-map">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+        <section id="subscribe" class="subscribe-row customBgColor subscribe-custom-bg">
             <div class="container">
                 <div class="subscribe-container clearfix wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="subscribe-desc font-additional font-weight-bold">suscribete a nuestra tienda</div>
+                    <div class="subscribe-desc font-additional font-weight-bold color-main">suscribete a nuestra tienda</div>
                     <div id="mc_embed_signup" class="subscribe-form">
                         <form action="//templines.us9.list-manage.com/subscribe/post?u=fe9a9cfcf8d73763bcc53f206&amp;id=319cafcc43" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                             <div id="mc_embed_signup_scroll">
@@ -186,7 +208,7 @@
                                     <div class="response" id="mce-error-response" style="display:none"></div>
                                     <div class="response" id="mce-success-response" style="display:none"></div>
                                 </div>
-                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups -->
                                 <div style="position: absolute; left: -5000px;">
                                     <input type="text" name="b_fe9a9cfcf8d73763bcc53f206_319cafcc43" tabindex="-1" value="">
                                 </div>
@@ -275,6 +297,7 @@
             </div>
         </footer>
     </div>
+
     <script src="https://unpkg.com/vue"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
     <script src="js/vue-social-sharing.min.js"></script>
@@ -282,10 +305,6 @@
     <script src="js/modernizr.custom.js"></script>
     <script src="js/jquery.placeholder.min.js"></script>
     <script src="js/smoothscroll.min.js"></script>
-    <!-- Loader -->
-    <script src="plugins/loader/js/classie.js"></script>
-    <script src="plugins/loader/js/pathLoader.js"></script>
-    <script src="plugins/loader/js/main.js"></script>
     <script src="js/classie.js"></script>
     <!--Owl Carousel-->
     <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
@@ -302,6 +321,20 @@
     <script src="js/wow.min.js"></script>
     <script src="js/cssua.min.js"></script>
     <script src="js/theme.js"></script>
+
+    <!-- <script src="external/jquery/jquery-2.1.4.min.js"></script> -->
+    <script src="external/bootstrap/bootstrap.min.js"></script>
+    <script src="external/countdown/jquery.plugin.min.js"></script>
+    <script src="external/countdown/jquery.countdown.min.js"></script>
+    <script src="external/isotope/isotope.pkgd.min.js"></script>
+    <script src="external/slick/slick.min.js"></script>
+    <script src="external/instafeed/instafeed.min.js"></script>
+    <script src="external/elevatezoom/jquery.elevatezoom.js"></script>
+    <script src="external/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="external/panelmenu/panelmenu.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="js/map-init.js"></script>
 </body>
 
 </html>
