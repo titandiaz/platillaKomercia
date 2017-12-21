@@ -1,32 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Seven Store</title>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
-
-    <link href="css/master.css" rel="stylesheet">
-    <link href="css/header1.css" rel="stylesheet">
-
-    <!-- SWITCHER -->
-    <link rel="stylesheet" id="switcher-css" type="text/css" href="plugins/switcher/css/switcher.css" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color1.css" title="color1" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color2.css" title="color2" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color3.css" title="color3" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color4.css" title="color4" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color5.css" title="color5" media="all" />
-    <link rel="stylesheet" href="css/vue.css">
-
-    <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
-    <!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Seven Store</title>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    
+        <link href="css/master.css" rel="stylesheet">
+        <link href="css/header1.css" rel="stylesheet">
+    
+        <!-- SWITCHER -->
+        <link rel="stylesheet" id="switcher-css" type="text/css" href="plugins/switcher/css/switcher.css" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color1.css" title="color1" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color2.css" title="color2" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color3.css" title="color3" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color4.css" title="color4" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color5.css" title="color5" media="all" />
+        <link rel="stylesheet" href="css/vue.css">
+    
+        <!-- <link rel="import" href="./ko-menu.html">
+        
+        <script src="https://polygit.org/components/webcomponentsjs/webcomponents-loader.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.8/webcomponents-lite.js"></script> -->
+        <script src="js/jquery-1.11.2.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
 </head>
 
 <body class="animated-css" data-scrolling-animations="false">
@@ -100,16 +104,13 @@
                         <i class="fa fa-times close-menu mobileMenuSwitcher onlyMobile"></i>
                         <ul class="nav navbar-nav navbar-main">
                             <li class="dropdown active">
-                                <a href="./index.html">Inicio</a>
+                                <a href="/">Inicio</a>
                             </li>
                             <li class="dropdown">
-                                <a href="./category.html">Catalogo</a>
+                                <a href="/catalogo">Catalogo</a>
                             </li>
                             <li class="dropdown">
-                                <a href="product-details.html">Nosotros </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="./contact.html">Contacto</a>
+                                <a href="/contacto">Contacto</a>
                             </li>
                         </ul>
                     </nav>
@@ -161,8 +162,8 @@
                                 </a>
                             </div>
                             <div class="products-cat clearfix">
-                                <ul class="products-list">
-                                    <li v-for="product in productos.slice(0, 8)" class="wow fadeInUp" data-wow-delay="0.3s">
+                                <ul v-if="productos" class="products-list">
+                                    <li v-for="product in productos" class="wow fadeInUp" data-wow-delay="0.3s">
                                         <div class="product-list_item row">
                                             <div class="product-list_item_img col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
                                                 <a href="product-details.html">
@@ -177,7 +178,7 @@
                                                     <div class="product-item_price font-additional font-weight-normal customColor">{{product.precio | formatNum}}</div>
                                                     <div v-html="currentProduct.info.descripcion" class="product-list_item_desc font-main font-weight-normal color-third"></div>
                                                     <a href="#" class="btn button-additional font-additional font-weight-normal text-uppercase hvr-rectangle-out hover-focus-bg before-bg">
-                                                        <span class="icon-basket" aria-hidden="true"></span> add to cart
+                                                        <span class="icon-basket" aria-hidden="true"></span> Agregar
                                                     </a>
                                                     <a href="#" class="btn button-border font-additional font-weight-normal text-uppercase hvr-rectangle-out hover-focus-border hover-focus-bg before-bg">
                                                         <span class="icon-heart" aria-hidden="true"></span>
@@ -240,9 +241,9 @@
             </a>
             <div class="footer-top">
                 <div class="container">
-                    <div class="row">
+                    <div class="row container-row">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInLeft" data-wow-delay="0.3s">
-                            <a href="index.html" class="footer-top_logo"></a>
+                            <a href="/" class="footer-top_logo"></a>
                             <div class="footer-top_container clearfix">
                                 <span class="font-main font-weight-normal color-additional">{{tienda.descripcion}}</span>
                                 <ul class="footer-social-list">
@@ -250,19 +251,6 @@
                                     <li v-show="tienda.red_youtube"><a :href="tienda.red_youtube"><span class="social_youtube" aria-hidden="true"></span></a></li>
                                     <li v-show="tienda.red_instagram"><a :href="tienda.red_instagram"><span class="social_instagram" aria-hidden="true"></span></a></li>
                                     <li v-show="tienda.red_facebook"><a :href="tienda.red_facebook"><span class="social_facebook" aria-hidden="true"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInUp" data-wow-delay="0.3s">
-                            <h4 class="footer-top_title color-main font-additional font-weight-bold text-uppercase">ENLACES</h4>
-                            <div class="footer-top_container clearfix">
-                                <ul class="footer-nav">
-                                    <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> My Account</a></li>
-                                    <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Order History</a></li>
-                                    <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> My Wishlist</a></li>
-                                    <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Order Tracking</a></li>
-                                    <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Shipping Information</a></li>
-                                    <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Gift Vouchers</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -284,7 +272,7 @@
                             <div class="footer-top_container clearfix">
                                 <ul class="footer-contact">
                                     <li class="font-main font-weight-normal color-additional">
-                                        <span class="icon_pin" aria-hidden="true"></span> {{tienda.direccion}} <br>New York 226688
+                                        <span class="icon_pin" aria-hidden="true"></span> {{tienda.direccion}} <br>
                                     </li>
                                     <li class="font-main font-weight-normal color-additional oneLine">
                                         <span class="icon_phone" aria-hidden="true"></span> {{tienda.telefono}}
@@ -292,9 +280,9 @@
                                     <li class="font-main font-weight-normal color-additional oneLine">
                                         <span class="icon_mail" aria-hidden="true"></span> {{tienda.email_tienda}}
                                     </li>
-                                    <li class="font-main font-weight-normal color-additional">
+                                    <!-- <li class="font-main font-weight-normal color-additional">
                                         <span class="icon_clock" aria-hidden="true"></span> Mon to Sat : 9:25 AM - 7:30 PM <br>Sun : 11:30 PM - 4:30 PM
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -309,12 +297,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix">
                             <ul class="footer-payments pull-right wow fadeInRight" data-wow-delay="0.3s">
-                                <li><img src="media/payments/1.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/2.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/3.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/4.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/5.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/6.jpg" alt="Payments"></li>
+                                    <li><img class="img-epayco" src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/powered.png" alt="Payments"></li>                                    
                             </ul>
                         </div>
                     </div>

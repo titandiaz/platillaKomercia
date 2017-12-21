@@ -56,7 +56,7 @@
 
             <div class="header-middle">
                 <div class="container relative">
-                    <a href="index.html" class="logo pull-left"></a>
+                    <a href="/" class="logo pull-left"></a>
                     <div class="header-search">
                         <div class="header-search_filter">
                             <select class="formDropdown font-additional font-weight-normal" name="filterby" id="filterby">
@@ -85,33 +85,24 @@
                             <span class="eli arrow_right customColor" aria-hidden="true"></span>
                         </div>
                         <div class="header-cart_product clearfix">
-                            <h3 class="font-additional font-weight-bold">Recently added item(s)</h3>
-                            <ul class="header-cart_product_list">
-                                <li>
-                                    <div class="header-cart_product_list_item clearfix">
-                                        <a class="item-preview" href="product-details.html"><img src="media/70x70/1.jpg" alt="Product"></a>
-                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">Stylish Wear</a></h4>
-                                        <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">Men</a></span>
-                                        <span class="item-price font-additional font-weight-normal customColor">37.15 USD</span>
-                                        <a class="item-del hover-focus-color" href="#"><i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="header-cart_product_list_item clearfix">
-                                        <a class="item-preview" href="product-details.html"><img src="media/70x70/2.jpg" alt="Product"></a>
-                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">Bag</a></h4>
-                                        <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">Accessories</a></span>
-                                        <span class="item-price font-additional font-weight-normal customColor">60.10 USD</span>
-                                        <a class="item-del hover-focus-color" href="#"><i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="cart-total text-right font-additional font-weight-normal">Subtotal <span class="customColor">$97.25</span></div>
-                            <div class="cart-buttons text-right">
-                                <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">View Cart</button>
-                                <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Checkout</button>
+                                <h3 class="font-additional font-weight-bold">Productos agregados</h3>
+                                <ul class="header-cart_product_list">
+                                    <li v-for="product in shoppingCart">
+                                        <div class="header-cart_product_list_item clearfix">
+                                            <a class="item-preview" href="product-details.html"><img :src="`http://brainmakers.net/mini/${product.detalle.foto}`" alt="Product"></a>
+                                            <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">{{product.detalle.nombre}}</a></h4>
+                                            <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">{{product.detalle.categoria_producto.nombre_categoria_producto}}</a></span>
+                                            <span class="item-price font-additional font-weight-normal customColor"><span v-show="product.counter !== 1">{{product.counter}} X </span>{{product.detalle.precio}}</span>
+                                            <a class="item-del hover-focus-color" href="#"><i class="fa fa-trash-o"></i></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="cart-total text-right font-additional font-weight-normal">Subtotal <span class="customColor">$97.25</span></div>
+                                <div class="cart-buttons text-right">
+                                    <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Carrito</button>
+                                    <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Checkout</button>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -122,16 +113,13 @@
                         <i class="fa fa-times close-menu mobileMenuSwitcher onlyMobile"></i>
                         <ul class="nav navbar-nav navbar-main">
                             <li class="dropdown active">
-                                <a href="./index.html">Inicio</a>
+                                <a href="/">Inicio</a>
                             </li>
                             <li class="dropdown">
-                                <a href="./category.html">Catalogo</a>
+                                <a href="/catalogo">Catalogo</a>
                             </li>
                             <li class="dropdown">
-                                <a href="product-details.html">Nosotros </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="./contact.html">Contacto</a>
+                                <a href="/contacto">Contacto</a>
                             </li>
                         </ul>
                     </nav>
@@ -159,9 +147,11 @@
                         <div v-for="product in productos.slice(0, 8)" class="item">
                             <div v-if="product" class="product-item hvr-underline-from-center">
                                 <div class="product-item_body product-border">
-                                    <img alt="Product" :src="`http://brainmakers.net/tumb/${product.foto}`" class="product-item_image">
+                                    <a :href="`/catalogo/${product.id}`">
+                                        <img alt="Product" :src="`http://brainmakers.net/tumb/${product.foto}`" class="product-item_image">
+                                    </a>
                                 </div>
-                                <a class="product-item_footer" href="product-details.html">
+                                <a class="product-item_footer" :href="`/catalogo/${product.id}`">
                                     <div class="product-item_title font-additional font-weight-bold text-center text-uppercase">{{product.nombre}}</div>
                                     <div class="product-item_price font-additional font-weight-normal customColor">{{product.precio | formatNum}}</div>
                                 </a>
@@ -208,7 +198,7 @@
                 <div class="container">
                     <div class="row container-row">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInLeft" data-wow-delay="0.3s">
-                            <a href="index.html" class="footer-top_logo"></a>
+                            <a href="/" class="footer-top_logo"></a>
                             <div class="footer-top_container clearfix">
                                 <span class="font-main font-weight-normal color-additional">{{tienda.descripcion}}</span>
                                 <ul class="footer-social-list">
@@ -237,7 +227,7 @@
                             <div class="footer-top_container clearfix">
                                 <ul class="footer-contact">
                                     <li class="font-main font-weight-normal color-additional">
-                                        <span class="icon_pin" aria-hidden="true"></span> {{tienda.direccion}} <br>New York 226688
+                                        <span class="icon_pin" aria-hidden="true"></span> {{tienda.direccion}} <br>
                                     </li>
                                     <li class="font-main font-weight-normal color-additional oneLine">
                                         <span class="icon_phone" aria-hidden="true"></span> {{tienda.telefono}}
@@ -245,9 +235,9 @@
                                     <li class="font-main font-weight-normal color-additional oneLine">
                                         <span class="icon_mail" aria-hidden="true"></span> {{tienda.email_tienda}}
                                     </li>
-                                    <li class="font-main font-weight-normal color-additional">
+                                    <!-- <li class="font-main font-weight-normal color-additional">
                                         <span class="icon_clock" aria-hidden="true"></span> Mon to Sat : 9:25 AM - 7:30 PM <br>Sun : 11:30 PM - 4:30 PM
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -262,12 +252,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix">
                             <ul class="footer-payments pull-right wow fadeInRight" data-wow-delay="0.3s">
-                                <li><img src="media/payments/1.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/2.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/3.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/4.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/5.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/6.jpg" alt="Payments"></li>
+                                <li><img class="img-epayco" src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/powered.png" alt="Payments"></li>
                             </ul>
                         </div>
                     </div>

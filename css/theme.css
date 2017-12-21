@@ -702,6 +702,7 @@ ul.product-item_info li a:hover .product-item_tip{
 	float: left;
 	padding: 34px 0 26px;
 	width: 100%;
+	height: 120px;
 }
 .product-item_title{
 	color: #333;

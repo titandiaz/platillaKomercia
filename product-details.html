@@ -7,21 +7,21 @@
     <title>Seven Store</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
 
-    <link href="css/master.css" rel="stylesheet">
-    <link href="css/header1.css" rel="stylesheet">
+    <link href="../css/master.css" rel="stylesheet">
+    <link href="../css/header1.css" rel="stylesheet">
 
     <!-- SWITCHER -->
-    <link rel="stylesheet" id="switcher-css" type="text/css" href="plugins/switcher/css/switcher.css" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color1.css" title="color1" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color2.css" title="color2" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color3.css" title="color3" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color4.css" title="color4" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="plugins/switcher/css/color5.css" title="color5" media="all" />
-    <link rel="stylesheet" href="css/vue.css">
+    <link rel="stylesheet" id="switcher-css" type="text/css" href="../plugins/switcher/css/switcher.css" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="../plugins/switcher/css/color1.css" title="color1" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="../plugins/switcher/css/color2.css" title="color2" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="../plugins/switcher/css/color3.css" title="color3" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="../plugins/switcher/css/color4.css" title="color4" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="../plugins/switcher/css/color5.css" title="color5" media="all" />
+    <link rel="stylesheet" href="../css/vue.css">
 
-    <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/jquery-1.11.2.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
     <!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -34,7 +34,7 @@
         <header id="header">
             <div class="header-middle">
                 <div class="container relative">
-                    <a href="index.html" class="logo pull-left"></a>
+                    <a href="/" class="logo pull-left"></a>
                     <div class="header-search">
                         <div class="header-search_filter">
                             <select class="formDropdown font-additional font-weight-normal" name="filterby" id="filterby">
@@ -65,21 +65,12 @@
                         <div class="header-cart_product clearfix">
                             <h3 class="font-additional font-weight-bold">Productos agregados</h3>
                             <ul class="header-cart_product_list">
-                                <li>
+                                <li v-for="product in shoppingCart">
                                     <div class="header-cart_product_list_item clearfix">
-                                        <a class="item-preview" href="product-details.html"><img src="media/70x70/1.jpg" alt="Product"></a>
-                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">Stylish Wear</a></h4>
-                                        <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">Men</a></span>
-                                        <span class="item-price font-additional font-weight-normal customColor">37.15 USD</span>
-                                        <a class="item-del hover-focus-color" href="#"><i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="header-cart_product_list_item clearfix">
-                                        <a class="item-preview" href="product-details.html"><img src="media/70x70/2.jpg" alt="Product"></a>
-                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">Bag</a></h4>
-                                        <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">Accessories</a></span>
-                                        <span class="item-price font-additional font-weight-normal customColor">60.10 USD</span>
+                                        <a class="item-preview" href="product-details.html"><img :src="`http://brainmakers.net/mini/${product.detalle.foto}`" alt="Product"></a>
+                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">{{product.detalle.nombre}}</a></h4>
+                                        <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">{{product.detalle.categoria_producto.nombre_categoria_producto}}</a></span>
+                                        <span class="item-price font-additional font-weight-normal customColor"><span v-show="product.counter !== 1">{{product.counter}} X </span>{{product.detalle.precio}}</span>
                                         <a class="item-del hover-focus-color" href="#"><i class="fa fa-trash-o"></i></a>
                                     </div>
                                 </li>
@@ -100,16 +91,13 @@
                         <i class="fa fa-times close-menu mobileMenuSwitcher onlyMobile"></i>
                         <ul class="nav navbar-nav navbar-main">
                             <li class="dropdown active">
-                                <a href="./index-1.html">Inicio</a>
+                                <a href="/">Inicio</a>
                             </li>
                             <li class="dropdown">
-                                <a href="./category.html">Catalogo</a>
+                                <a href="/catalogo">Catalogo</a>
                             </li>
                             <li class="dropdown">
-                                <a href="product-details.html">Nosotros </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="./contact.html">Contacto</a>
+                                <a href="/contacto">Contacto</a>
                             </li>
                         </ul>
                     </nav>
@@ -176,32 +164,23 @@
                             </div>
                             <div class="product-options_row">
                                 <div class="product-counter">
-                                    <input class="font-main font-weight-normal" type="text" name="product-qty" id="productQuantity" value="1" readonly="readonly">
-                                    <div class="productCounter addQuantity font-main hover-focus-color" data-counter-step="1" data-counter-type="add" data-counter-field="#productQuantity">+</div>
-                                    <div class="productCounter minusQuantity font-main hover-focus-color" data-counter-step="1" data-counter-type="minus" data-counter-field="#productQuantity">-</div>
+                                    <input class="font-main font-weight-normal" type="text" name="product-qty" id="productQuantity" v-model="counter" readonly="readonly">
+                                    <div class="productCounter addQuantity font-main hover-focus-color" @click="sum">+</div>
+                                    <div class="productCounter minusQuantity font-main hover-focus-color" @click="rest">-</div>
                                 </div>
-                                <a href="#" class="btn button-additional button-big font-additional font-weight-normal text-uppercase hvr-rectangle-out hover-focus-bg before-bg">
+                                <a @click="addProductToCart" class="btn button-additional button-big font-additional font-weight-normal text-uppercase hvr-rectangle-out hover-focus-bg before-bg">
                                     <span class="icon-basket" aria-hidden="true"></span> Agreagar
                                 </a>
-                            </div>
-                            <div class="product-options_row">
-                                <ul class="product-links">
-                                    <li>
-                                        <a href="#" class="font-additional font-weight-normal hover-focus-color">
-                                            <span class="icon-envelope" aria-hidden="true"></span> email to friend
-                                        </a>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                         <div class="product-options_footer clearfix wow fadeInUp" data-wow-delay="0.3s">
                             <div class="product-options_row">
                                 <h4 class="font-additional font-weight-bold text-uppercase">categorias</h4>
                                 <ul class="tags-list">
-                                    <li v-for="categoria in categorias"><a href="category.html" class="font-main color-third hover-focus-color">{{categoria.nombre_categoria_producto}}</a>,</li>
+                                    <li v-for="categoria in categorias"><a href="/catalogo" class="font-main color-third hover-focus-color">{{categoria.nombre_categoria_producto}}</a>,</li>
                                 </ul>
                                 <h4 class="font-additional font-weight-bold text-uppercase">Comparte este producto</h4>
-                                <social-sharing :url="`${urlHttp}`" :title="currentProduct.detalle.nombre" :description="currentProduct.info.descripcion" quote="Vue is a progressive framework for building user interfaces." hashtags="vuejs,javascript,framework" twitter-user="vuejs" inline-template>
+                                <social-sharing :url="`${urlHttp}`" :title="currentProduct.detalle.nombre" :description="currentProduct.info.descripcion" :quote="currentProduct.info.descripcion" hashtags="vuejs,javascript,framework" twitter-user="vuejs" inline-template>
                                     <ul class="social-list">
                                         <network network="facebook">
                                             <li><a class="hover-focus-border hover-focus-bg hvr-rectangle-out before-bg"><span class="social_facebook" aria-hidden="true"></span></a></li>
@@ -259,7 +238,7 @@
                 <div class="container">
                     <div class="row container-row">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 clearfix wow fadeInLeft" data-wow-delay="0.3s">
-                            <a href="index.html" class="footer-top_logo"></a>
+                            <a href="/" class="footer-top_logo"></a>
                             <div class="footer-top_container clearfix">
                                 <span class="font-main font-weight-normal color-additional">{{tienda.descripcion}}</span>
                                 <ul class="footer-social-list">
@@ -313,12 +292,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix">
                             <ul class="footer-payments pull-right wow fadeInRight" data-wow-delay="0.3s">
-                                <li><img src="media/payments/1.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/2.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/3.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/4.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/5.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/6.jpg" alt="Payments"></li>
+                                    <li><img class="img-epayco" src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/powered.png" alt="Payments"></li>                                    
                             </ul>
                         </div>
                     </div>
@@ -329,27 +303,30 @@
 
     <script src="https://unpkg.com/vue"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
-    <script src="js/vue-social-sharing.min.js"></script>
-    <script src="js/vue.js"></script>
-    <script src="js/modernizr.custom.js"></script>
-    <script src="js/jquery.placeholder.min.js"></script>
-    <script src="js/smoothscroll.min.js"></script>
-    <script src="js/classie.js"></script>
+    <script src="../js/vue-social-sharing.min.js"></script>
+    <script src="../js/vue.js"></script>
+    <script>
+        app.getDataProducto();
+    </script>
+    <script src="../js/modernizr.custom.js"></script>
+    <script src="../js/jquery.placeholder.min.js"></script>
+    <script src="../js/smoothscroll.min.js"></script>
+    <script src="../js/classie.js"></script>
     <!--Owl Carousel-->
-    <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script src="../plugins/owl-carousel/owl.carousel.min.js"></script>
     <!-- bxSlider -->
-    <script src="plugins/bxslider/jquery.bxslider.min.js"></script>
+    <script src="../plugins/bxslider/jquery.bxslider.min.js"></script>
     <!--Switcher-->
-    <script src="plugins/switcher/js/bootstrap-select.js"></script>
-    <script src="plugins/switcher/js/evol.colorpicker.min.js" type="text/javascript"></script>
-    <script src="plugins/switcher/js/dmss.js"></script>
+    <script src="../plugins/switcher/js/bootstrap-select.js"></script>
+    <script src="../plugins/switcher/js/evol.colorpicker.min.js" type="text/javascript"></script>
+    <script src="../plugins/switcher/js/dmss.js"></script>
     <!-- SCRIPTS -->
-    <script type="text/javascript" src="plugins/isotope/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="../plugins/isotope/jquery.isotope.min.js"></script>
 
     <!--THEME-->
-    <script src="js/wow.min.js"></script>
-    <script src="js/cssua.min.js"></script>
-    <script src="js/theme.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script src="../js/cssua.min.js"></script>
+    <script src="../js/theme.js"></script>
 </body>
 
 </html>

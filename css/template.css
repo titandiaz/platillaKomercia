@@ -360,13 +360,13 @@ p {
 }
 @media (max-width: 1024px) {
     .block-title.large {
-        font-size: 65px;
+        font-size: 55px;
         line-height: 70px;
     }
 }
 @media (max-width: 790px) {
     .block-title.large {
-        font-size: 55px;
+        font-size: 45px;
         line-height: 60px;
     }
 }
@@ -12059,7 +12059,7 @@ only screen and (min-resolution: 120dpi) {
 .information-block {
     text-align: center;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 26px;
     color: #333333;
 }

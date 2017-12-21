@@ -75,21 +75,12 @@
                         <div class="header-cart_product clearfix">
                             <h3 class="font-additional font-weight-bold">Productos agregados</h3>
                             <ul class="header-cart_product_list">
-                                <li>
+                                <li v-for="product in shoppingCart">
                                     <div class="header-cart_product_list_item clearfix">
-                                        <a class="item-preview" href="product-details.html"><img src="media/70x70/1.jpg" alt="Product"></a>
-                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">Stylish Wear</a></h4>
-                                        <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">Men</a></span>
-                                        <span class="item-price font-additional font-weight-normal customColor">37.15 USD</span>
-                                        <a class="item-del hover-focus-color" href="#"><i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="header-cart_product_list_item clearfix">
-                                        <a class="item-preview" href="product-details.html"><img src="media/70x70/2.jpg" alt="Product"></a>
-                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">Bag</a></h4>
-                                        <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">Accessories</a></span>
-                                        <span class="item-price font-additional font-weight-normal customColor">60.10 USD</span>
+                                        <a class="item-preview" href="product-details.html"><img :src="`http://brainmakers.net/mini/${product.detalle.foto}`" alt="Product"></a>
+                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">{{product.detalle.nombre}}</a></h4>
+                                        <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">{{product.detalle.categoria_producto.nombre_categoria_producto}}</a></span>
+                                        <span class="item-price font-additional font-weight-normal customColor"><span v-show="product.counter !== 1">{{product.counter}} X </span>{{product.detalle.precio}}</span>
                                         <a class="item-del hover-focus-color" href="#"><i class="fa fa-trash-o"></i></a>
                                     </div>
                                 </li>
@@ -114,9 +105,6 @@
                             </li>
                             <li class="dropdown">
                                 <a href="./category.html">Catalogo</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="product-details.html">Nosotros </a>
                             </li>
                             <li class="dropdown">
                                 <a href="./contact.html">Contacto</a>
@@ -152,17 +140,17 @@
                             </ul>
                             <div class="social-icon-round">
                                 <ul>
-                                    <li>
-                                        <a class="icon fa fa-facebook" href="http://www.facebook.com/"></a>
+                                    <li v-show="tienda.red_facebook">
+                                        <a class="icon fa fa-facebook" :href="tienda.red_facebook"></a>
                                     </li>
-                                    <li>
-                                        <a class="icon fa fa-twitter" href="http://www.twitter.com/"></a>
+                                    <li v-show="tienda.red_twitter">
+                                        <a class="icon fa fa-twitter" :href="tienda.red_twitter"></a>
                                     </li>
-                                    <li>
-                                        <a class="icon fa fa-google-plus" href="http://www.google.com/"></a>
+                                    <li v-show="tienda.red_youtube">
+                                        <a class="icon fa fa-youtube-play" :href="tienda.red_youtube"></a>
                                     </li>
-                                    <li>
-                                        <a class="icon fa fa-instagram" href="https://instagram.com/"></a>
+                                    <li v-show="tienda.red_instagram">
+                                        <a class="icon fa fa-instagram" :href="tienda.red_instagram"></a>
                                     </li>
                                 </ul>
                             </div>
@@ -284,12 +272,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix">
                             <ul class="footer-payments pull-right wow fadeInRight" data-wow-delay="0.3s">
-                                <li><img src="media/payments/1.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/2.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/3.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/4.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/5.jpg" alt="Payments"></li>
-                                <li><img src="media/payments/6.jpg" alt="Payments"></li>
+                                    <li><img class="img-epayco" src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/powered.png" alt="Payments"></li>                                    
                             </ul>
                         </div>
                     </div>

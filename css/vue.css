@@ -21,4 +21,9 @@
 .container-row {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.img-epayco {
+    width: 600px;
 }

@@ -3,8 +3,13 @@ Vue.use(SocialSharing);
 var app = new Vue({
     el: '#app',
     created(){
-        this.getData();
-        this.getDataProducto();
+        this.getData()
+        if(JSON.parse(localStorage.getItem('ShoppingCart'))){
+            this.shoppingCart = JSON.parse(localStorage.getItem('ShoppingCart'))
+        }else {
+            this.shoppingCart = [] 
+        }
+       
     },
     data: {
       ocultar: false,
@@ -17,7 +22,10 @@ var app = new Vue({
       productos: [],
       productosFiltrados: [],
       banners: [],
-      message: 'Hello Vue!'
+      shoppingCart: [],
+      counter: 1,
+      message: 'Hello Vue!',
+
     },
     
     methods: {
@@ -35,7 +43,11 @@ var app = new Vue({
             })
         },
         getDataProducto(){
-            axios.get(`https://brainmakers.net/api/front/producto/956`).then((response) => {
+            var URLactual = window.location.href;
+            var arrURL = URLactual.split("/", -1)
+            var indexId = arrURL.length-1
+            var idURL = arrURL[indexId]
+            axios.get(`https://brainmakers.net/api/front/producto/${idURL}`).then((response) => {
                 this.currentProduct = response.data;
                 setTimeout(()=>{
                     global.Core.initialize();
@@ -45,12 +57,38 @@ var app = new Vue({
         render(){
             this.productosFiltrados = this.productos.filter(product => product.precio >= this.valorFiltroMinimo && product.precio <= this.valorFiltroMaximo)
         },
-        pop(){
-            this.ocultar = true;
+        sum(){
+            this.counter = this.counter + 1
         },
-        pop2(){
-            this.ocultar = false;
-        }
+        rest(){
+            this.counter = this.counter - 1
+        },
+        addProductToCart() {
+            let duplicateProduct = []
+            for (let [index, valor] of this.shoppingCart.entries()) {
+                if (this.currentProduct.detalle.id == valor.detalle.id) {
+                    duplicateProduct = [index, valor]
+                }
+            }
+            this.currentProduct.counter = this.counter;
+           
+             
+            if (duplicateProduct.length !== 0) {
+                this.shoppingCart[duplicateProduct[0]].counter += this.counter
+                
+            }else {
+                this.shoppingCart.push(this.currentProduct)
+            }
+            this.refreshLocalStorage()
+        },
+        removeProduct(){
+            // eliminar producto
+        },
+        refreshLocalStorage(){
+            localStorage.setItem('ShoppingCart', JSON.stringify(this.shoppingCart))
+        },
+
+
     },
     computed:{
         reverseImages: function () {
