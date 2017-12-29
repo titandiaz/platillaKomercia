@@ -552,21 +552,7 @@ input[type="text"] {
 }
 .btn {
     background: #FF8300;
-    border: none;
-    color: #ffffff;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    position: relative;
-    outline: none;
-    padding: 5px 23px 4px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    transition: all 0.2s linear;
-    -ms-transition: all 0.2s linear;
-    -webkit-transition: all 0.2s linear;
-    -o-transition: all 0.2s linear;
+    color: #fff;
 }
 .btn .icon,
 .btn .fa {
@@ -13911,11 +13897,6 @@ footer .container-fluid {
 /* footer */
 .margin-top-60 {
     margin-top: 60px;
-}
-@media (max-width: 1024px) {
-    footer {
-        margin-top: 90px;
-    }
 }
 @media (max-width: 490px) {
     footer {

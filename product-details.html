@@ -44,34 +44,34 @@
                             <i class="fa fa-angle-down customColor"></i>
                         </div>
                         <div class="header-search_form">
-                            <form class="product-search form-inline" action="#" method="POST">
+                            <form class="product-search form-inline" action="/catalogo" method="GET">
                                 <div class="form-group">
-                                    <label class="sr-only" for="searchQuery">Nombre del Producto ...</label>
-                                    <input type="search" class="product-search_field font-main font-weight-normal" id="searchQuery" placeholder="Nombre del Producto ...">
+                                    <label  class="sr-only" for="searchQuery">Nombre del Producto ...</label>
+                                    <input v-model="search" type="search" class="product-search_field font-main font-weight-normal" id="searchQuery" placeholder="Nombre del Producto ...">
                                 </div>
-                                <button type="submit" class="product-search_btn hvr-border-fade">
+                                <button @click="setInput" type="submit" class="product-search_btn hvr-border-fade">
 									  <i class="fa fa-search"></i>
-								  </button>
+							    </button>
                             </form>
                         </div>
                     </div>
                     <div class="header-cart pull-right">
                         <div class="header-cart_preview">
                             <span class="sli icon-bag customBgColor" aria-hidden="true"></span>
-                            <span class="header-cart_qty font-additional font-weight-bold text-uppercase">2 ITEM(S)</span>
+                            <span class="header-cart_qty font-additional font-weight-bold text-uppercase">{{sizeShoppingCart}} PRODUCTO(S)</span>
                             <span class="header-cart_amount font-additional font-weight-normal">97.25 USD</span>
                             <span class="eli arrow_right customColor" aria-hidden="true"></span>
                         </div>
                         <div class="header-cart_product clearfix">
                             <h3 class="font-additional font-weight-bold">Productos agregados</h3>
                             <ul class="header-cart_product_list">
-                                <li v-for="product in shoppingCart">
+                                <li v-for="(product, index) in shoppingCart">
                                     <div class="header-cart_product_list_item clearfix">
                                         <a class="item-preview" href="product-details.html"><img :src="`http://brainmakers.net/mini/${product.detalle.foto}`" alt="Product"></a>
                                         <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">{{product.detalle.nombre}}</a></h4>
                                         <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">{{product.detalle.categoria_producto.nombre_categoria_producto}}</a></span>
                                         <span class="item-price font-additional font-weight-normal customColor"><span v-show="product.counter !== 1">{{product.counter}} X </span>{{product.detalle.precio}}</span>
-                                        <a class="item-del hover-focus-color" href="#"><i class="fa fa-trash-o"></i></a>
+                                        <a @click="removeProduct(index)" class="item-del hover-focus-color" href="#"><i class="fa fa-trash-o"></i></a>
                                     </div>
                                 </li>
                             </ul>
@@ -121,7 +121,7 @@
                         <div class="product-sidebar-slider vertical-slider slide-controls-top wow fadeInUp" data-wow-delay="0.3s">
                             <ul class="bxslider" data-mode="vertical" data-slide-margin="26" data-min-slides="3" data-move-slides="1" data-pager="false" data-pager-custom="null" data-controls="true">
                                 <li v-for="product in productos">
-                                    <a class="popular-product-item" href="product-details.html">
+                                    <a class="popular-product-item" :href="`/catalogo/${product.id}`">
                                         <img class="miniImage" :src="`http://brainmakers.net/mini/${product.foto}`" alt="Product">
                                         <span class="popular-product-item_title font-additional font-weight-bold text-uppercase">{{product.nombre}}</span>
                                         <span class="popular-product-item_price font-additional customColor">{{product.precio | formatNum}}</span>

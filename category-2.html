@@ -48,12 +48,12 @@
                             <i class="fa fa-angle-down customColor"></i>
                         </div>
                         <div class="header-search_form">
-                            <form class="product-search form-inline" action="#" method="POST">
+                            <form class="product-search form-inline" action="/catalogo" method="GET">
                                 <div class="form-group">
                                     <label class="sr-only" for="searchQuery">Nombre del Producto ...</label>
                                     <input type="search" class="product-search_field font-main font-weight-normal" id="searchQuery" placeholder="Nombre del Producto ...">
                                 </div>
-                                <button type="submit" class="product-search_btn hvr-border-fade">
+                                <button @click="setInput" type="submit" class="product-search_btn hvr-border-fade">
 										<i class="fa fa-search"></i>
 									</button>
                             </form>
@@ -62,7 +62,7 @@
                     <div class="header-cart pull-right">
                         <div class="header-cart_preview">
                             <span class="sli icon-bag customBgColor" aria-hidden="true"></span>
-                            <span class="header-cart_qty font-additional font-weight-bold text-uppercase">2 ITEM(S)</span>
+                            <span class="header-cart_qty font-additional font-weight-bold text-uppercase">{{sizeShoppingCart}} PRODUCTO(S)</span>
                             <span class="header-cart_amount font-additional font-weight-normal">97.25 USD</span>
                             <span class="eli arrow_right customColor" aria-hidden="true"></span>
                         </div>

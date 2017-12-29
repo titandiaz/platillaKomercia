@@ -1,5 +1,8 @@
+// import VueFuse from './fuse.min.js';
 
-Vue.use(SocialSharing);
+// Vue.use(VueFuse)
+Vue.use(SocialSharing)
+
 var app = new Vue({
     el: '#app',
     created(){
@@ -11,14 +14,29 @@ var app = new Vue({
         }
        
     },
+    // mounted(){
+    //     setTimeout(() => {
+    //         if(localStorage.getItem('Search')){
+    //             this.search = localStorage.getItem('Search')
+    //             localStorage.removeItem('Search')
+    //             this.searchProduct()
+    //         }
+    //     },3000)
+        
+    // },
     data: {
+      contactName: '',
+      contactEmail:'',
+      contactMessage: '',
+      search: '',
+      email: '',
       ocultar: false,
       urlHttp: 'https://brainmakers.net',
       currentProduct: null,
       valorFiltroMinimo: 100,
       valorFiltroMaximo: 500000,
       tienda: {},
-      categorias:[],
+      categorias: [],
       productos: [],
       productosFiltrados: [],
       banners: [],
@@ -39,7 +57,7 @@ var app = new Vue({
                 setTimeout(()=>{
                   global.Core.initialize();
                 }, 200)
-                
+                this.timeSearch()
             })
         },
         getDataProducto(){
@@ -52,6 +70,7 @@ var app = new Vue({
                 setTimeout(()=>{
                     global.Core.initialize();
                   }, 200)
+                  
             });
         },
         render(){
@@ -81,23 +100,80 @@ var app = new Vue({
             }
             this.refreshLocalStorage()
         },
-        removeProduct(){
-            // eliminar producto
+        removeProduct(index){
+            this.shoppingCart.splice(index, 1)
+            this.refreshLocalStorage()
         },
         refreshLocalStorage(){
             localStorage.setItem('ShoppingCart', JSON.stringify(this.shoppingCart))
         },
+        searchProduct(){
+
+            var options = {
+                shouldSort: true,
+                threshold: 0.6,
+                location: 0,
+                distance: 100,
+                maxPatternLength: 32,
+                minMatchCharLength: 1,
+                keys: [
+                    "nombre",
+                ]
+            };
+
+            var fuse = new Fuse(this.productos, options)
+            var search  = this.search
+            this.productosFiltrados = fuse.search(search)
+        },
+        subscriptionNewsletter(){
+            let params = {
+                correo: this.email,
+                tienda: 229,
+            }
+            axios.post('http://brainmakers.net/api/front/suscriptores', params).then((response) => {
+                this.email = ""
+            })
+        },
+        setInput(){    
+            localStorage.setItem("Search", this.search)    
+        },
+        timeSearch(){
+            this.search = localStorage.getItem('Search')
+            localStorage.removeItem('Search')
+            this.searchProduct()
+        },
+        submitContact(){
+            let params = {
+                nombre: this.contactName,
+                correo: this.contactEmail,
+                celular: 0,
+                comentario: this.contactMessage,
+                tienda: 229
+            }
+            axios.post('http://brainmakers.net/api/front/mensaje-contacto', params).then((response) => {
+                
+            })
+        }
 
 
     },
     computed:{
         reverseImages: function () {
             return this.productos.slice(-5, this.productos.length).reverse()
+        },
+        sizeShoppingCart: function () {
+            return this.shoppingCart.length
         }
     },
     filters: {
         formatNum: function (value) {
           return new Intl.NumberFormat().format(value);
+        }
+      },
+
+    watch:{
+        search: function(value) {
+            this.searchProduct()
         }
       }
   })
