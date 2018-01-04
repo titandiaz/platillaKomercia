@@ -68,9 +68,9 @@
                                 <li v-for="(product, index) in shoppingCart">
                                     <div class="header-cart_product_list_item clearfix">
                                         <a class="item-preview" href="product-details.html"><img :src="`http://brainmakers.net/mini/${product.detalle.foto}`" alt="Product"></a>
-                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">{{product.detalle.nombre}}</a></h4>
+                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">{{product.detalle.nombre}} / <span v-for="item in product.currentCombination.combinacion">{{item}} </span></a></h4>
                                         <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">{{product.detalle.categoria_producto.nombre_categoria_producto}}</a></span>
-                                        <span class="item-price font-additional font-weight-normal customColor"><span v-show="product.counter !== 1">{{product.counter}} X </span>{{product.detalle.precio}}</span>
+                                        <span class="item-price font-additional font-weight-normal customColor"><span v-show="product.counter !== 1">{{product.counter}} X </span>{{product.currentCombination.precio | formatNum}} </span>
                                         <a @click="removeProduct(index)" class="item-del hover-focus-color" href="#"><i class="fa fa-trash-o"></i></a>
                                     </div>
                                 </li>
@@ -133,34 +133,21 @@
                     <div class="product-cart pull-left col-lg-5 col-md-5 col-sm-12 col-xs-12 clearfix">
                         <div class="product-options_header clearfix wow fadeInUp" data-wow-delay="0.3s">
                             <h3 class="font-additional font-weight-bold text-uppercase">{{currentProduct.detalle.nombre}}</h3>
-                            <div class="product-item_price font-additional font-weight-normal customColor">{{currentProduct.detalle.precio | formatNum}}</div>
+                            <div class="product-item_price font-additional font-weight-normal customColor">{{currentCombination.precio | formatNum}}</div>
                         </div>
                         <div class="product-options_body clearfix wow fadeInUp" data-wow-delay="0.3s">
                             <h4 class="font-additional font-weight-bold text-uppercase">DESCRIPCIÓN DEL PRODUCTO</h4>
                             <div v-html="currentProduct.info.descripcion" class="product-options_desc font-main color-third"></div>
                         </div>
                         <div class="product-options_cart clearfix wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="select pull-left">
-                                <select id="size" name="size" class="select-field font-additional">
-										<option value="">Talla</option>
-										<option value="trending">extra large</option>
-										<option value="sales">Large</option>
-										<option value="rating">medium</option>
-										<option value="price-asc">small</option>
-										<option value="price-desc">extra small</option>
-									</select>
-                                <i class="fa fa-angle-down customColor"></i>
-                            </div>
-                            <div class="select pull-right">
-                                <select id="color" name="color" class="select-field font-additional">
-										<option value="">Color</option>
-										<option value="trending">White</option>
-										<option value="sales">green</option>
-										<option value="rating">black</option>
-										<option value="price-asc">red</option>
-										<option value="price-desc">blue</option>
-									</select>
-                                <i class="fa fa-angle-down customColor"></i>
+                            <div class="variants">
+                                <div v-for="(variante, index) in currentProduct.variantes" class="select pull-left variants_items">
+                                    <select v-model="combinacion[index]" id="size" name="size" class="select-field font-additional">
+                                            <option value="" selected>{{variante.nombre}}</option>
+                                            <option v-for="value in variante.valores" :value="value.option">{{value.option}}</option>
+                                    </select>
+                                    <i class="fa fa-angle-down customColor"></i>
+                                </div>
                             </div>
                             <div class="product-options_row">
                                 <div class="product-counter">
@@ -168,8 +155,8 @@
                                     <div class="productCounter addQuantity font-main hover-focus-color" @click="sum">+</div>
                                     <div class="productCounter minusQuantity font-main hover-focus-color" @click="rest">-</div>
                                 </div>
-                                <a @click="addProductToCart" class="btn button-additional button-big font-additional font-weight-normal text-uppercase hvr-rectangle-out hover-focus-bg before-bg">
-                                    <span class="icon-basket" aria-hidden="true"></span> Agreagar
+                                <a @click="addProductToCart" v-show="showAddProductButton" class="btn button-additional button-big font-additional font-weight-normal text-uppercase hvr-rectangle-out hover-focus-bg before-bg">
+                                    <span class="icon-basket" aria-hidden="true"></span> Agregar
                                 </a>
                             </div>
                         </div>
@@ -257,7 +244,7 @@
                                     <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Delivery Information</a></li>
                                     <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Terms & Conditions</a></li>
                                     <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Privacy Policy</a></li>
-                                    <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Contact us</a></li>
+                                    <li><a href="/contacto" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Contact us</a></li>
                                     <li><a href="#" class="font-main font-weight-normal color-additional"><i class="fa fa-angle-right customColor"></i> Return Policy</a></li>
                                 </ul>
                             </div>
@@ -267,7 +254,7 @@
                             <div class="footer-top_container clearfix">
                                 <ul class="footer-contact">
                                     <li class="font-main font-weight-normal color-additional">
-                                        <span class="icon_pin" aria-hidden="true"></span> {{tienda.direccion}} <br>New York 226688
+                                        <span class="icon_pin" aria-hidden="true"></span> {{tienda.direccion}} <br>
                                     </li>
                                     <li class="font-main font-weight-normal color-additional oneLine">
                                         <span class="icon_phone" aria-hidden="true"></span> {{tienda.telefono}}
@@ -275,9 +262,9 @@
                                     <li class="font-main font-weight-normal color-additional oneLine">
                                         <span class="icon_mail" aria-hidden="true"></span> {{tienda.email_tienda}}
                                     </li>
-                                    <li class="font-main font-weight-normal color-additional">
+                                    <!-- <li class="font-main font-weight-normal color-additional">
                                         <span class="icon_clock" aria-hidden="true"></span> Mon to Sat : 9:25 AM - 7:30 PM <br>Sun : 11:30 PM - 4:30 PM
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -292,13 +279,17 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix">
                             <ul class="footer-payments pull-right wow fadeInRight" data-wow-delay="0.3s">
-                                    <li><img class="img-epayco" src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/powered.png" alt="Payments"></li>                                    
+                                <li><img class="img-epayco" src="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/powered.png" alt="Payments"></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </footer>
+        <!-- modal -->
+        <!-- <div id=”miVentana” style=”position: fixed; width: 350px; height: 190px; top: 0; left: 0; font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; border: #333333 3px solid; background-color: #FAFAFA; color: #000000; display:none;”>
+            Aquí pones tu contenido web
+        </div> -->
     </div>
 
     <script src="https://unpkg.com/vue"></script>

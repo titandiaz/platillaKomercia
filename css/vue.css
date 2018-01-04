@@ -27,3 +27,12 @@
 .img-epayco {
     width: 600px;
 }
+
+.variants {
+    display: flex;
+}
+
+
+.variants_items ~ .variants_items {
+    margin-left: 10px;
+}

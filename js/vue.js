@@ -25,6 +25,10 @@ var app = new Vue({
         
     // },
     data: {
+      showAddProductButton: true,
+      duplicateProduct: [],
+      currentCombination: {},
+      combinacion: [],
       contactName: '',
       contactEmail:'',
       contactMessage: '',
@@ -45,7 +49,6 @@ var app = new Vue({
       message: 'Hello Vue!',
 
     },
-    
     methods: {
         getData(){
             axios.get("https://brainmakers.net/api/front/tienda/229" ).then((response) => {
@@ -66,43 +69,81 @@ var app = new Vue({
             var indexId = arrURL.length-1
             var idURL = arrURL[indexId]
             axios.get(`https://brainmakers.net/api/front/producto/${idURL}`).then((response) => {
+                response.data.combinaciones.combinaciones = JSON.parse(response.data.combinaciones.combinaciones)
                 this.currentProduct = response.data;
+                this.combinacion = Array.from(new Array(app.currentProduct.variantes.length), () => '')
                 setTimeout(()=>{
                     global.Core.initialize();
                   }, 200)
-                  
+                this.persistenceProducts()
             });
         },
         render(){
             this.productosFiltrados = this.productos.filter(product => product.precio >= this.valorFiltroMinimo && product.precio <= this.valorFiltroMaximo)
         },
         sum(){
-            this.counter = this.counter + 1
+            if (this.duplicateProduct.length != 0) {
+                if (this.counter < this.currentCombination.unidades - this.duplicateProduct[1].counter) {
+                    this.counter = this.counter + 1  
+                }
+            } else {
+                if (this.counter < this.currentCombination.unidades) {
+                    this.counter = this.counter + 1  
+                }
+            }          
         },
         rest(){
-            this.counter = this.counter - 1
+            if (this.counter <= 1) {
+                this.counter = 1
+            }else {
+                this.counter = this.counter - 1                    
+            }
         },
         addProductToCart() {
-            let duplicateProduct = []
-            for (let [index, valor] of this.shoppingCart.entries()) {
-                if (this.currentProduct.detalle.id == valor.detalle.id) {
-                    duplicateProduct = [index, valor]
-                }
-            }
-            this.currentProduct.counter = this.counter;
-           
-             
-            if (duplicateProduct.length !== 0) {
-                this.shoppingCart[duplicateProduct[0]].counter += this.counter
+            console.log(this.duplicateProduct[0])
+            if (this.duplicateProduct.length !== 0) {
+                this.shoppingCart[this.duplicateProduct[0]].counter += this.counter
                 
             }else {
-                this.shoppingCart.push(this.currentProduct)
+                let newProduct = {
+                    counter: this.counter,
+                    detalle: {
+                        id: this.currentProduct.detalle.id,
+                        nombre: this.currentProduct.detalle.nombre,
+                        foto: this.currentProduct.detalle.foto,
+                        categoria_producto: {
+                            nombre_categoria_producto: this.currentProduct.detalle.categoria_producto.nombre_categoria_producto
+                        }
+                    },
+                    currentCombination: {
+                        combinacion: this.currentCombination.combinacion,
+                        precio: this.currentCombination.precio,
+                        unidades: this.currentCombination.unidades,
+                        sku: this.currentCombination.sku
+                    }
+                }
+                this.shoppingCart.push(newProduct)
+                this.duplicateProduct = [this.shoppingCart.length - 1, newProduct]
             }
+            this.counter = 1
             this.refreshLocalStorage()
+            this.blockButton()
+        },
+        persistenceProducts() {
+            this.duplicateProduct = []
+            for (let [index, valor] of this.shoppingCart.entries()) {
+                if (this.currentProduct.detalle.id == valor.detalle.id && this.currentCombination.combinacion.toString() == valor.currentCombination.combinacion.toString()) {
+                    this.duplicateProduct = [index, valor]
+                }
+            }
+            this.blockButton()
+
         },
         removeProduct(index){
             this.shoppingCart.splice(index, 1)
+            if (index == this.duplicateProduct[0]) this.duplicateProduct = []
             this.refreshLocalStorage()
+            this.blockButton()
         },
         refreshLocalStorage(){
             localStorage.setItem('ShoppingCart', JSON.stringify(this.shoppingCart))
@@ -153,6 +194,12 @@ var app = new Vue({
             axios.post('http://brainmakers.net/api/front/mensaje-contacto', params).then((response) => {
                 
             })
+        },
+        blockButton() {
+            // this.showAddProductButton = true
+            // if (this.duplicateProduct[1].counter >= this.currentCombination.unidades) {
+            //     this.showAddProductButton = false 
+            // }
         }
 
 
@@ -167,13 +214,26 @@ var app = new Vue({
     },
     filters: {
         formatNum: function (value) {
-          return new Intl.NumberFormat().format(value);
+            if (value) {
+                return new Intl.NumberFormat().format(value);  
+            }
         }
-      },
-
+    },
     watch:{
+        combinacion (value) {
+            let emptyDefault = {
+                combinacion: [],
+                precio: this.currentProduct.detalle.precio,
+                unidades: this.currentProduct.info.inventario,
+                sku: this.currentProduct.info.sku
+            }
+            this.currentCombination = this.currentProduct.combinaciones.combinaciones.filter( item => item.combinacion.toString() == value.toString())[0] || emptyDefault
+            this.counter = 1
+            this.persistenceProducts()
+        },
         search: function(value) {
             this.searchProduct()
         }
+       
       }
   })
