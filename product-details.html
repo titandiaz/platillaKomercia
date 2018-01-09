@@ -59,7 +59,7 @@
                         <div class="header-cart_preview">
                             <span class="sli icon-bag customBgColor" aria-hidden="true"></span>
                             <span class="header-cart_qty font-additional font-weight-bold text-uppercase">{{sizeShoppingCart}} PRODUCTO(S)</span>
-                            <span class="header-cart_amount font-additional font-weight-normal">97.25 USD</span>
+                            <span class="header-cart_amount font-additional font-weight-normal">${{subtotal | formatNum}}</span>
                             <span class="eli arrow_right customColor" aria-hidden="true"></span>
                         </div>
                         <div class="header-cart_product clearfix">
@@ -75,10 +75,9 @@
                                     </div>
                                 </li>
                             </ul>
-                            <div class="cart-total text-right font-additional font-weight-normal">Subtotal <span class="customColor">$97.25</span></div>
+                            <div class="cart-total text-right font-additional font-weight-normal">Subtotal <span class="customColor">${{subtotal | formatNum}}</span></div>
                             <div class="cart-buttons text-right">
-                                <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Carrito</button>
-                                <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Checkout</button>
+                                <button @click="checkout" class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Checkout</button>
                             </div>
                         </div>
                     </div>
@@ -109,7 +108,7 @@
                 <div class="row">
                     <div class="product-gallery col-lg-4 col-md-4 col-sm-7 col-xs-12 clearfix">
                         <ul class="bxslider" data-mode="fade" data-slide-margin="0" data-min-slides="1" data-move-slides="1" data-pager="true" data-pager-custom="#bx-pager" data-controls="false">
-                            <li v-if="currentProduct" v-for="foto in currentProduct.fotos"><img :src="`https://brainmakers.net/tumb/${foto.foto}`" /></li>
+                            <li v-if="currentProduct" v-for="foto in currentProduct.fotos"><img :src="`https://brainmakers.net/tumb/${foto.foto}`" class="imagen-principal-categoria"/></li>
                         </ul>
                         <div id="bx-pager" class="product-gallery_preview">
                             <a v-for="(foto, index) in currentProduct.fotos" :data-slide-index="index" href="#"><img :src="`http://brainmakers.net/mini/${foto.foto}`" /></a>
@@ -294,6 +293,7 @@
 
     <script src="https://unpkg.com/vue"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.0.4/fuse.min.js"></script>
     <script src="../js/vue-social-sharing.min.js"></script>
     <script src="../js/vue.js"></script>
     <script>

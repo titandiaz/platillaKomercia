@@ -64,7 +64,7 @@
                         <div class="header-cart_preview">
                             <span class="sli icon-bag customBgColor" aria-hidden="true"></span>
                             <span class="header-cart_qty font-additional font-weight-bold text-uppercase">{{sizeShoppingCart}} PRODUCTO(S)</span>
-                            <span class="header-cart_amount font-additional font-weight-normal">97.25 USD</span>
+                            <span class="header-cart_amount font-additional font-weight-normal">${{subtotal | formatNum}}</span>
                             <span class="eli arrow_right customColor" aria-hidden="true"></span>
                         </div>
                         <div class="header-cart_product clearfix">
@@ -73,17 +73,16 @@
                                 <li v-for="product in shoppingCart">
                                     <div class="header-cart_product_list_item clearfix">
                                         <a class="item-preview" href="product-details.html"><img :src="`http://brainmakers.net/mini/${product.detalle.foto}`" alt="Product"></a>
-                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">{{product.detalle.nombre}}</a></h4>
+                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">{{product.detalle.nombre}} / <span v-for="item in product.currentCombination.combinacion">{{item}} </span></a></h4>
                                         <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">{{product.detalle.categoria_producto.nombre_categoria_producto}}</a></span>
-                                        <span class="item-price font-additional font-weight-normal customColor"><span v-show="product.counter !== 1">{{product.counter}} X </span>{{product.detalle.precio}}</span>
+                                        <span class="item-price font-additional font-weight-normal customColor"><span v-show="product.counter !== 1">{{product.counter}} X </span>{{product.currentCombination.precio | formatNum}}</span>
                                         <a @click="removeProduct(index)" class="item-del hover-focus-color" href="#"><i class="fa fa-trash-o"></i></a>
                                     </div>
                                 </li>
                             </ul>
-                            <div class="cart-total text-right font-additional font-weight-normal">Subtotal <span class="customColor">$97.25</span></div>
+                            <div class="cart-total text-right font-additional font-weight-normal">Subtotal <span class="customColor">${{subtotal | formatNum}}</span></div>
                             <div class="cart-buttons text-right">
-                                <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Carrito</button>
-                                <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Checkout</button>
+                                <button @click="checkout" class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Checkout</button>
                             </div>
                         </div>
                     </div>
@@ -145,14 +144,14 @@
                     </div>
                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 clearfix">
                         <div class="content-box">
-                            <div class="category-filter clearfix wow fadeInUp" data-wow-delay="0.3s">
+                            <!-- <div class="category-filter clearfix wow fadeInUp" data-wow-delay="0.3s">
                                 <a href="catalogo-2" class="pull-right grid-type hover-focus-border">
                                     <span class="icon-list" aria-hidden="true"></span>
                                 </a>
                                 <a href="/catalogo" class="pull-right grid-type active customBgColor color-main">
                                     <span class="icon-grid" aria-hidden="true"></span>
                                 </a>
-                            </div>
+                            </div> -->
                             <div class="products-cat clearfix">
                                 <ul v-if="productosFiltrados.length != 0" class="products-grid">
                                     <li v-for="product in productosFiltrados" class="gutter wow fadeInUp" data-wow-delay="0.3s">
@@ -266,9 +265,6 @@
                                     <li class="font-main font-weight-normal color-additional oneLine">
                                         <span class="icon_mail" aria-hidden="true"></span> {{tienda.email_tienda}}
                                     </li>
-                                    <!-- <li class="font-main font-weight-normal color-additional">
-                                        <span class="icon_clock" aria-hidden="true"></span> Mon to Sat : 9:25 AM - 7:30 PM <br>Sun : 11:30 PM - 4:30 PM
-                                    </li> -->
                                 </ul>
                             </div>
                         </div>

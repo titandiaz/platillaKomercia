@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Seven Store</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
-
+    
+    <link rel="stylesheet" href="css/vue.css">
     <link href="css/master.css" rel="stylesheet">
     <link href="css/header1.css" rel="stylesheet">
 
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="css/template.css">
 
 
-    <link rel="stylesheet" href="css/vue.css">
 
     <!-- <link rel="import" href="./ko-menu.html"> -->
 
@@ -69,7 +69,7 @@
                         <div class="header-cart_preview">
                             <span class="sli icon-bag customBgColor" aria-hidden="true"></span>
                             <span class="header-cart_qty font-additional font-weight-bold text-uppercase">{{sizeShoppingCart}} PRODUCTO(S)</span>
-                            <span class="header-cart_amount font-additional font-weight-normal">97.25 USD</span>
+                            <span class="header-cart_amount font-additional font-weight-normal">${{subtotal | formatNum}}</span>
                             <span class="eli arrow_right customColor" aria-hidden="true"></span>
                         </div>
                         <div class="header-cart_product clearfix">
@@ -78,16 +78,15 @@
                                 <li v-for="product in shoppingCart">
                                     <div class="header-cart_product_list_item clearfix">
                                         <a class="item-preview" href="product-details.html"><img :src="`http://brainmakers.net/mini/${product.detalle.foto}`" alt="Product"></a>
-                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">{{product.detalle.nombre}}</a></h4>
+                                        <h4><a class="font-additional font-weight-normal hover-focus-color" href="product-details.html">{{product.detalle.nombre}} / <span v-for="item in product.currentCombination.combinacion">{{item}} </span></a></h4>
                                         <span class="item-cat font-main font-weight-normal"><a class="hover-focus-color" href="#">{{product.detalle.categoria_producto.nombre_categoria_producto}}</a></span>
-                                        <span class="item-price font-additional font-weight-normal customColor"><span v-show="product.counter !== 1">{{product.counter}} X </span>{{product.detalle.precio}}</span>
+                                        <span class="item-price font-additional font-weight-normal customColor"><span v-show="product.counter !== 1">{{product.counter}} X </span>{{product.currentCombination.precio | formatNum}}</span>
                                         <a @click="removeProduct(index)" class="item-del hover-focus-color" href="#"><i class="fa fa-trash-o"></i></a>
                                     </div>
                                 </li>
                             </ul>
-                            <div class="cart-total text-right font-additional font-weight-normal">Subtotal <span class="customColor">$97.25</span></div>
+                            <div class="cart-total text-right font-additional font-weight-normal">Subtotal <span class="customColor">${{subtotal | formatNum}}</span></div>
                             <div class="cart-buttons text-right">
-                                <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Carrito</button>
                                 <button class="btn btn-white font-additional font-weight-bold hvr-shutter-out-horizontal before-bg">Checkout</button>
                             </div>
                         </div>
@@ -101,13 +100,13 @@
                         <i class="fa fa-times close-menu mobileMenuSwitcher onlyMobile"></i>
                         <ul class="nav navbar-nav navbar-main">
                             <li class="dropdown active">
-                                <a href="./index.html">Inicio</a>
+                                <a href="/">Inicio</a>
                             </li>
                             <li class="dropdown">
-                                <a href="./category.html">Catalogo</a>
+                                <a href="/catalogo">Catalogo</a>
                             </li>
                             <li class="dropdown">
-                                <a href="./contact.html">Contacto</a>
+                                <a href="/contacto">Contacto</a>
                             </li>
                         </ul>
                     </nav>
@@ -280,6 +279,7 @@
 
     <script src="https://unpkg.com/vue"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.0.4/fuse.min.js"></script>
     <script src="js/vue-social-sharing.min.js"></script>
     <script src="js/vue.js"></script>
     <script src="js/modernizr.custom.js"></script>

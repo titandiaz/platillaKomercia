@@ -1,6 +1,3 @@
-// import VueFuse from './fuse.min.js';
-
-// Vue.use(VueFuse)
 Vue.use(SocialSharing)
 
 var app = new Vue({
@@ -12,19 +9,10 @@ var app = new Vue({
         }else {
             this.shoppingCart = [] 
         }
-       
+        this.calcSubtotal()
     },
-    // mounted(){
-    //     setTimeout(() => {
-    //         if(localStorage.getItem('Search')){
-    //             this.search = localStorage.getItem('Search')
-    //             localStorage.removeItem('Search')
-    //             this.searchProduct()
-    //         }
-    //     },3000)
-        
-    // },
     data: {
+      subtotal: 0,
       showAddProductButton: true,
       duplicateProduct: [],
       currentCombination: {},
@@ -45,9 +33,7 @@ var app = new Vue({
       productosFiltrados: [],
       banners: [],
       shoppingCart: [],
-      counter: 1,
-      message: 'Hello Vue!',
-
+      counter: 1
     },
     methods: {
         getData(){
@@ -136,17 +122,18 @@ var app = new Vue({
                     this.duplicateProduct = [index, valor]
                 }
             }
-            this.blockButton()
-
+            this.blockButton()   
         },
         removeProduct(index){
             this.shoppingCart.splice(index, 1)
             if (index == this.duplicateProduct[0]) this.duplicateProduct = []
             this.refreshLocalStorage()
             this.blockButton()
+            
         },
         refreshLocalStorage(){
             localStorage.setItem('ShoppingCart', JSON.stringify(this.shoppingCart))
+            this.calcSubtotal()
         },
         searchProduct(){
 
@@ -196,12 +183,40 @@ var app = new Vue({
             })
         },
         blockButton() {
-            // this.showAddProductButton = true
-            // if (this.duplicateProduct[1].counter >= this.currentCombination.unidades) {
-            //     this.showAddProductButton = false 
-            // }
+            this.showAddProductButton = true
+            if (this.duplicateProduct.length != 0) {
+                if (this.duplicateProduct[1].counter >= this.currentCombination.unidades) {
+                    this.showAddProductButton = false 
+                }
+            }
+            if (this.currentProduct.variantes.length != 0 && this.currentCombination.combinacion.length == 0) {
+                this.showAddProductButton = false
+            }
+        },
+        calcSubtotal() {
+            this.subtotal = 0
+            for(let i = 0; i < this.shoppingCart.length; i++) {
+                this.subtotal += this.shoppingCart[i].counter * this.shoppingCart[i].currentCombination.precio
+            }
+        },
+        checkout() {
+            let params = {
+                "products": this.shoppingCart.map(function (obj) {
+                    return {
+                        "id": obj.detalle.id,
+                        "unidades": obj.counter,
+                        "precio" : obj.currentCombination.precio
+                    }
+                }),
+                "tienda": this.tienda.id_tienda,
+                "tipo": 0,
+                "total": this.subtotal,
+                "estado" : 0,
+                "direccion_entrega": 1
         }
-
+        params = JSON.stringify(params)
+        location.href = `http://brainmakers.net/before/checkout/${params}`;
+        }
 
     },
     computed:{
@@ -233,7 +248,7 @@ var app = new Vue({
         },
         search: function(value) {
             this.searchProduct()
-        }
+        },
        
       }
   })

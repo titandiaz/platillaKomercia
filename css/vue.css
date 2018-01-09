@@ -1,5 +1,6 @@
 :root {
     --logo: '';
+    --primaryColor: steelblue
 }
 .logo {
     background-size: contain;
@@ -17,6 +18,9 @@
 .miniImage {
     max-width: 80px;
     max-height: 75px;
+}
+.imagen-principal-categoria{
+    width: 100%;
 }
 .container-row {
     display: flex;
